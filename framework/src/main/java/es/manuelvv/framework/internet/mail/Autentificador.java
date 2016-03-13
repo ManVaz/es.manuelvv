@@ -24,23 +24,24 @@ public class Autentificador extends Authenticator {
 	}
 	
 	/**
-	 * @return PasswordAuthentication Retorna un objeto PasswordAuthentication para realizar la autentificación en el servidor
+	 * Retorna un objeto PasswordAuthentication para realizar la autentificación en el servidor
+	 * @return PasswordAuthentication 
 	 */
 	public PasswordAuthentication getPasswordAutentificador() {
 		return new PasswordAuthentication(this.usuario, this.password);
 	}
 
 	/**
-	 * Setter.
-	 * @param usuario Usuario del servidor
+	 * Usuario del servidor
+	 * @param usuario 
 	 */
 	public void setUsuario(String usuario) {
 		this.usuario = usuario;
 	}
 
 	/**
-	 * 
-	 * @param password Password del servidor
+	 * Password del servidor
+	 * @param password 
 	 */
 	public void setPassword(String password) {
 		this.password = password;
