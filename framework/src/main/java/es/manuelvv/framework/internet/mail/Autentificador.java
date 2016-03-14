@@ -33,7 +33,7 @@ public class Autentificador extends Authenticator {
 
 	/**
 	 * Usuario del servidor
-	 * @param usuario 
+	 * @param usuario Usuario
 	 */
 	public void setUsuario(String usuario) {
 		this.usuario = usuario;
@@ -41,7 +41,7 @@ public class Autentificador extends Authenticator {
 
 	/**
 	 * Password del servidor
-	 * @param password 
+	 * @param password Passwword
 	 */
 	public void setPassword(String password) {
 		this.password = password;

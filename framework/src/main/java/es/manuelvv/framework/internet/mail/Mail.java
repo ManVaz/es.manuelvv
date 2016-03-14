@@ -2,6 +2,8 @@ package es.manuelvv.framework.internet.mail;
 
 import java.util.ArrayList;
 import javax.mail.internet.InternetAddress;
+import javax.mail.internet.AddressException;
+import es.manuelvv.framework.utils.ValidacionesUtils;
 
 /**
  * Clase Mail
@@ -21,7 +23,6 @@ public class Mail {
 	private String usuario;
 	private String password;
 	
-
 	/**
 	 * Constructor sin parámetros
 	 */
@@ -37,7 +38,7 @@ public class Mail {
 	
 	/**
 	 * Añade el emisor del correo
-	 * @param from 
+	 * @param from Email que envia el correo electronico
 	 */
 	public void setFrom(InternetAddress from) {
 		this.from = from;
@@ -53,15 +54,22 @@ public class Mail {
 
 	/**
 	 * Añade un destinatario a la lista de destinatarios
-	 * @param to 
+	 * @param to Email de destinatario para añadir al ArrayList
 	 */
-	public void setTo(InternetAddress to) {
-		this.to.add(to);
+	public void setTo(InternetAddress to) 
+	throws AddressException{
+		
+		//Validamos la dirección
+		if (ValidacionesUtils.validarEmail(to)){
+			this.to.add(to);
+		}else{
+			throw new AddressException();
+		}
 	}
 
 	/**
 	 * Retorna la lista de email en copia
-	 * @return cc 
+	 * @return cc
 	 */
 	public ArrayList<InternetAddress> getCc() {
 		return cc;
@@ -69,15 +77,22 @@ public class Mail {
 
 	/**
 	 * Añade un destinatario como copia
-	 * @param cc 
+	 * @param cc Email para copia a anadir al ArrayList
 	 */
-	public void setCc(InternetAddress cc) {
-		this.cc.add(cc);
+	public void setCc(InternetAddress cc) 
+	throws AddressException{
+
+		//Validamos la dirección
+		if (ValidacionesUtils.validarEmail(cc)){
+			this.cc.add(cc);
+		}else{
+			throw new AddressException();		
+		}
 	}
 
 	/**
 	 * Retorna el servidor añadido
-	 * @return host 
+	 * @return host
 	 */
 	public String getHost() {
 		return host;
@@ -85,7 +100,7 @@ public class Mail {
 
 	/**
 	 * Anade el servidor de correo
-	 * @param host 
+	 * @param host Host que enviara el correo
 	 */
 	public void setHost(String host) {
 		this.host = host;
@@ -93,7 +108,7 @@ public class Mail {
 
 	/**
 	 * Retorna el usuario de correo
-	 * @return usuario 
+	 * @return usuario
 	 */
 	public String getUsuario() {
 		return usuario;
@@ -101,7 +116,7 @@ public class Mail {
 
 	/**
 	 * Añade el usuario del servidor de corre
-	 * @param usuarioo
+	 * @param usuario Usuario del servidor
 	 */
 	public void setUsuario(String usuario) {
 		this.usuario = usuario;
@@ -109,7 +124,7 @@ public class Mail {
 	
 	/**
 	 * Añade el password del servidor de correo
-	 * @param password 
+	 * @param password Password del servidor
 	 */
 	public void setPassword(String password) {
 		this.password = password;
