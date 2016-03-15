@@ -19,8 +19,10 @@ public class Autentificador extends Authenticator {
 	/**
 	 * Constructor.
 	 */
-	public Autentificador() {
+	public Autentificador(String usuario, String password) {
 		super();
+		this.usuario = usuario;
+		this.password = password;
 	}
 	
 	/**

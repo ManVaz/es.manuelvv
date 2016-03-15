@@ -14,4 +14,14 @@ public final class Constantes {
     public static String PATTERN_EMAIL = "^[_A-Za-z0-9-\\+]+(\\.[_A-Za-z0-9-]+)*@" +
     									 "[A-Za-z0-9-]+(\\.[A-Za-z0-9]+)*(\\.[A-Za-z]{2,})$";
 
+    //Contantes para email
+    public static String JM_MAIL_SMTP = "mail.smtp.host";
+    public static String JM_SOCK_PORT = "mail.smtp.socketFactory.port";
+    public static String JM_SOCK_CLAS = "mail.smtp.socketFactory.class";
+    public static String JM_SOCK_SSL = "javax.net.ssl.SSLSocketFactory";
+    public static String JM_MAIL_AUTH = "mail.smtp.auth";
+    
+    //Constantes genericas
+    public static String TRUE = "true";
+    
 }
