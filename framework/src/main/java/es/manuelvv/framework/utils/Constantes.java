@@ -21,6 +21,9 @@ public final class Constantes {
     public static String JM_SOCK_SSL = "javax.net.ssl.SSLSocketFactory";
     public static String JM_MAIL_AUTH = "mail.smtp.auth";
     
+    //Typos
+    public static String TXT_HTML = "text/html";
+    
     //Constantes genericas
     public static String TRUE = "true";
     

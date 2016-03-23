@@ -18,6 +18,8 @@ public class Autentificador extends Authenticator {
 	
 	/**
 	 * Constructor.
+	 * @param usuario Usuario del servidor
+	 * @param password Password del servidor
 	 */
 	public Autentificador(String usuario, String password) {
 		super();

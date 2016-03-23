@@ -3,13 +3,9 @@ package es.manuelvv.framework.internet.mail;
 import java.util.ArrayList;
 import java.util.Properties;
 
-import javax.mail.Message;
-import javax.mail.MessagingException;
-import javax.mail.Session;
-import javax.mail.Transport;
-import javax.mail.internet.AddressException;
-import javax.mail.internet.InternetAddress;
-import javax.mail.internet.MimeMessage;
+import javax.activation.*;
+import javax.mail.*;
+import javax.mail.internet.*;
 
 import es.manuelvv.framework.utils.Constantes;
 import es.manuelvv.framework.utils.ValidacionesUtils;
@@ -35,12 +31,36 @@ public class Mail {
 	private String password;
 	private int puerto;
 	
+	private Multipart multipart = new MimeMultipart();
+	
 	private Properties props;
 	private Session session;
 	private MimeMessage message;
 	
 	/**
+	 * Valida si existe toda la información necesaria para enviar el correo
+	 * @return true/false si la validación es correcta
+	 */
+	private boolean validarEmail(){
+		
+		if (asunto.isEmpty() ||
+			host.isEmpty() ||
+			usuario.isEmpty() ||
+			password.isEmpty() ||
+			puerto == 0 ||
+			from == null ||
+			to.isEmpty()){
+			return false;
+		}
+		return true;
+	}
+	
+	/**
 	 * Constructor sin parámetros, se inicializa la session y el mensaje
+	 * @param host Servidor de correo electronico
+	 * @param puerto Puerto del servidor de correo electronico
+	 * @param usuario Usuario del servidor
+	 * @param password Password del servidor
 	 */
 	public Mail(String host, int puerto, String usuario, String password){
 		
@@ -70,10 +90,14 @@ public class Mail {
 
 	/**
 	 * Envio de los correos electronicos
-	 * @throws MessagingException
+	 * @throws MessagingException Excepción al enviar un correo electronico
 	 */
 	public void envio() 
 	throws MessagingException{
+		
+		if (!validarEmail()){
+			throw new MessagingException("Faltan datos para enviar el email");//Sustituir muulltidioma
+		}
 		
 		message.saveChanges(); 
 		
@@ -85,13 +109,48 @@ public class Mail {
 	}
 	
 	/**
+	 * Añade un fichero al correo electronico
+	 * @param fichero a añadir
+	 * @throws MessagingException Excepción al adjuntar un fichero
+	 */
+	public void setFichero(String fichero) 
+	throws MessagingException{
+		DataSource source = new FileDataSource(fichero);
+		
+		BodyPart messageBodyPart = new MimeBodyPart();
+		messageBodyPart.setDataHandler(new DataHandler(source));
+		messageBodyPart.setFileName(fichero);
+		multipart.addBodyPart(messageBodyPart);
+		
+		message.setContent(multipart);
+	}
+	
+	/**
+	 * Asigna un asuento en formato html
+	 * @param html Html del correo electronico
+	 * @throws MessagingException Excepción al añadir un texto html
+	 */
+	public void setHtml(String html) 
+	throws MessagingException{
+		BodyPart messageBodyPart = new MimeBodyPart();
+		messageBodyPart.setContent(html, Constantes.TXT_HTML);
+		multipart.addBodyPart(messageBodyPart);
+		
+		message.setContent(multipart);
+	}
+
+	/**
 	 * Asigna un texto plano para el email
 	 * @param texto Texto plano de un email
-	 * @throws MessagingException
+	 * @throws MessagingException Excepción al añadir un texto simple
 	 */
 	public void setTexto(String texto) 
 	throws MessagingException{
-		message.setText(texto);
+		BodyPart messageBodyPart = new MimeBodyPart();
+		messageBodyPart.setText(texto);
+		multipart.addBodyPart(messageBodyPart);
+		
+		message.setContent(multipart);
 	}
 	
 	/**
@@ -105,7 +164,7 @@ public class Mail {
 	/**
 	 * Añade el emisor del correo
 	 * @param from Email que envia el correo electronico
-	 * @throws MessagingException 
+	 * @throws MessagingException Excepción al añadir el origen 
 	 */
 	public void setFrom(InternetAddress from) 
 	throws MessagingException {
@@ -125,7 +184,7 @@ public class Mail {
 	/**
 	 * Añade un destinatario a la lista de destinatarios
 	 * @param to Email de destinatario para añadir al ArrayList
-	 * @throws MessagingException 
+	 * @throws MessagingException Excepción al añadir un destinatario
 	 */
 	public void setTo(InternetAddress to) 
 	throws MessagingException{
@@ -142,7 +201,7 @@ public class Mail {
 	/**
 	 * Añade varios destinatarios a la lista de destinatarios
 	 * @param to Lista de email de destinatarios para añadir 
-	 * @throws MessagingException 
+	 * @throws MessagingException Excepción al añadir varios destinatarios
 	 */
 	public void setTo(InternetAddress to[])
 	throws MessagingException{
@@ -168,8 +227,8 @@ public class Mail {
 
 	/**
 	 * Añade un destinatario a la lista de copias
-	 * @param to Email de destinatario en copia oculta para añadir al ArrayList
-	 * @throws MessagingException 
+	 * @param bbc Email de destinatario en copia oculta para añadir al ArrayList
+	 * @throws MessagingException Excepción al asingar varios emaail en copia
 	 */
 	public void setBbc(InternetAddress bbc) 
 	throws MessagingException{
@@ -185,8 +244,8 @@ public class Mail {
 	
 	/**
 	 * Añade varios destinatarios en copia oculta a la lista de destinatarios
-	 * @param to Lista de email en copia oculata para añadir 
-	 * @throws MessagingException 
+	 * @param bbc Lista de email en copia oculata para añadir 
+	 * @throws MessagingException Excepción al aañadir varios correos en copia oculta
 	 */
 	public void setBbc(InternetAddress bbc[])
 	throws MessagingException{
@@ -213,7 +272,7 @@ public class Mail {
 	/**
 	 * Añade un destinatario como copia
 	 * @param cc Email para copia a anadir al ArrayList
-	 * @throws MessagingException 
+	 * @throws MessagingException Excepción al añadir correo en copia
 	 */
 	public void setCc(InternetAddress cc) 
 	throws MessagingException{
@@ -229,8 +288,8 @@ public class Mail {
 	
 	/**
 	 * Añade varios destinatarios en copia a la lista de destinatarios
-	 * @param to Lista de email en copia para añadir 
-	 * @throws MessagingException 
+	 * @param cc Lista de email en copia para añadir 
+	 * @throws MessagingException Excepción al añadir varios correos en copia
 	 */
 	public void setCc(InternetAddress cc[])
 	throws MessagingException{
@@ -257,7 +316,7 @@ public class Mail {
 	/**
 	 * Anade el asunto al correo
 	 * @param asunto Asunto del correo
-	 * @throws MessagingException 
+	 * @throws MessagingException Excepción al asignar asunto
 	 */
 	public void setAsunto(String asunto) 
 	throws MessagingException {
