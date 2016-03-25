@@ -27,4 +27,7 @@ public final class Constantes {
     //Constantes genericas
     public static String TRUE = "true";
     
+    //Tipos encriptación
+    public static String MD5 =  "MD5"; 
+    
 }

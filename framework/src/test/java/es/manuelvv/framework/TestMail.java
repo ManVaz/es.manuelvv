@@ -1,38 +1,15 @@
 package es.manuelvv.framework;
 
+import static org.junit.Assert.*;
+import org.junit.Test;
+import es.manuelvv.framework.internet.mail.Mail;
 import javax.mail.internet.InternetAddress;
 
-import es.manuelvv.framework.internet.mail.Mail;
-import junit.framework.Test;
-import junit.framework.TestCase;
-import junit.framework.TestSuite;
+public class TestMail {
 
-/**
- * Unit test for simple App.
- */
-public class TestMail 
-    extends TestCase
-{
-	
-	/**
-	 * @param args Argumentos
-	 */
-	public static void main (String[] args){
-		junit.textui.TestRunner.run(suite());
-	} 
+	@Test
+	public void test() {
 
-    /**
-     * @return the suite of tests being tested
-     */
-    public static Test suite(){
-        return new TestSuite(TestMail.class);
-    }
-
-    /**
-     * Rigourous Test :-)
-     */
-    public void testMail(){
-    	
 		try{
 			Mail m = new Mail("smtp.gmail.com", 465, "manuelvv", "Vaz3525air");
 			InternetAddress ia = new InternetAddress();
@@ -50,6 +27,7 @@ public class TestMail
 		}catch (Exception ex){
 			fail("Error al enviar el correo electronico");
 		}
-        
-    }
+	        
+	}
+
 }
