@@ -32,7 +32,7 @@
         <!-- Drop and re-create the database schema on startup -->
         <property name="hbm2ddl.auto">Validate</property>
 
-        <mapping resource="es/manuelvv/framework/bbdd/hibernate/hbm/usuarios.hbm.xml" />
+        <mapping resource="es/manuelvv/figuras/bbdd/hbm/usuarios.hbm.xml" />
     </session-factory>
 
 </hibernate-configuration>
