@@ -20,11 +20,12 @@ public class TestMail {
 			
 			m.setAsunto("Prueba");
 			m.setHtml("<h1>PRUEBA</h1>");
-			m.setFichero("C:/API JavaMail.pdf");
+			m.setFichero("C:/srv/eclipse/eclipse.ini");
 			m.envio();
 			assertTrue(true);
 			
 		}catch (Exception ex){
+			ex.printStackTrace();
 			fail("Error al enviar el correo electronico");
 		}
 	        

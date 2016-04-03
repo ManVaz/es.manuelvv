@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE hibernate-mapping PUBLIC 
+		"-//Hibernate/Hibernate Mapping DTD//EN"
+		"http://www.hibernate.org/dtd/hibernate-mapping-3.0.dtd">
+<hibernate-mapping>
+	<class name="es.manuelvv.framework.usuario.model.Usuario" table="usuarios">
+		<id name="id" column="ID_USUARIO">
+			<generator class="native"></generator>
+		</id>
+		<property name="alias" type="string" column="ALIAS" not-null="true"/>
+		<property name="email" type="string" column="EMAIL"  not-null="true"/>
+		<property name="fec_baja" type="date" column="FEC_BAJA"/>
+		<property name="intentos" type="int" column="INTENTOS" not-null="true"/>
+		<property name="password" type="string" column="PASSWORD" not-null="true"/>
+		<property name="fec_alta" type="date" column="FEC_ALTA"/>
+		<property name="fec_modif" type="date" column="FEC_MODIF"/>
+		<property name="ctl_usuario" type="int" column="CTL_USUARIO"  not-null="true"/>
+	</class>
+</hibernate-mapping>
