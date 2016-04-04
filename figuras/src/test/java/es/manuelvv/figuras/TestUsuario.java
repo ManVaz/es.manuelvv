@@ -6,10 +6,12 @@ import org.junit.Test;
 import org.hibernate.SessionFactory;
 import org.hibernate.Session;
 
-import es.manuelvv.framework.bbdd.hibernate.HibernateSession;
+import es.manuelvv.figuras.bbdd.hibernate.HibernateSession;
 import es.manuelvv.figuras.usuario.DAO.UsuarioDAO;
 import es.manuelvv.figuras.usuario.model.Usuario;
 import es.manuelvv.framework.utils.EncriptacionMD5;
+import es.manuelvv.figuras.persona.model.Persona;
+import es.manuelvv.figuras.persona.DAO.PersonaDAO;
 
 public class TestUsuario {
 
@@ -22,6 +24,16 @@ public class TestUsuario {
 		
 		Usuario usuario = new Usuario();
 		UsuarioDAO usuarioDAO = new UsuarioDAO();
+		PersonaDAO personaDAO = new PersonaDAO();
+		
+		//Creamos la persona
+		Persona persona = new Persona();
+		persona.setCtl_usuario(1);
+		persona.setCtl_estado(1);
+		persona.setId_tipo_documento(1);
+		persona.setNombre("Prueba");
+		persona.setApellidos("Prueba");
+		persona.setNum_documento("1001");
 		
 		//Inicializamos los datos del usuario
 		usuario.setAlias("PRUEBA");
@@ -38,6 +50,9 @@ public class TestUsuario {
 				
 		//Insert
 		try{
+			personaDAO.insert(session, persona);
+			usuario.setPersona(persona);
+			usuario.setId_persona(persona.getId());
 			usuarioDAO.insert(session, usuario);
 		} catch (Exception ex){
 			fail("Error al insertar");
@@ -61,6 +76,7 @@ public class TestUsuario {
 		//Delete
 		try{
 			usuarioDAO.delete(session, usuario);
+			personaDAO.delete(session, persona);
 		} catch (Exception ex){
 			fail("Error al borrar");
 		}
@@ -69,4 +85,25 @@ public class TestUsuario {
 		session.close();
 	}
 
+	@Test
+	public void testSelect() {
+		
+		Session session = HibernateSession.getSession();
+		session.beginTransaction();
+		
+		Usuario usuario = new Usuario();
+		UsuarioDAO usuarioDAO = new UsuarioDAO();
+				
+		usuario.setId((long) 1);
+		
+		//Select
+		try{
+			usuario = usuarioDAO.selectById(session, usuario.getId());
+		} catch (Exception ex){
+			fail("Error al seleccionar");
+		}
+		
+		session.getTransaction().commit();
+		session.close();
+	}
 }

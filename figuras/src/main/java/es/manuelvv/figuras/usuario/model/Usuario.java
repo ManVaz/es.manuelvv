@@ -2,6 +2,8 @@ package es.manuelvv.figuras.usuario.model;
 
 import java.util.Date;
 
+import es.manuelvv.figuras.persona.model.Persona;
+
 public class Usuario {
 
 	private Long id;
@@ -13,6 +15,8 @@ public class Usuario {
 	private Date fec_alta;
 	private Date fec_modif;
 	private Integer ctl_usuario;
+	private Long id_persona;
+	private Persona persona;
 	
 	public Usuario() {
 		
@@ -25,7 +29,9 @@ public class Usuario {
 				   Date fec_baja,
 				   Integer intentos,
 				   Date fec_modif,
-				   Integer ctl_usuario){
+				   Integer ctl_usuario,
+				   Long id_persona,
+				   Persona persona){
 		
 		setId(id);
 		setAlias(alias);
@@ -35,6 +41,8 @@ public class Usuario {
 		setIntentos(intentos);
 		setFec_modif(fec_modif);
 		setCtl_usuario(ctl_usuario);
+		setId_persona(id_persona);
+		setPersona(persona);
 		
 	}
 	
@@ -110,5 +118,22 @@ public class Usuario {
 		this.password = password;
 	}
 
+	public Persona getPersona() {
+		return persona;
+	}
+
+	public void setPersona(Persona persona) {
+		this.persona = persona;
+	}
+
+	public Long getId_persona() {
+		return id_persona;
+	}
+
+	public void setId_persona(Long id_persona) {
+		this.id_persona = id_persona;
+	}
+
+	
 }
 

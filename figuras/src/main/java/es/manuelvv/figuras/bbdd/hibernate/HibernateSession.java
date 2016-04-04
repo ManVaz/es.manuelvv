@@ -1,4 +1,4 @@
-package es.manuelvv.framework.bbdd.hibernate;
+package es.manuelvv.figuras.bbdd.hibernate;
 
 import org.hibernate.Session;
 import org.hibernate.SessionFactory;
@@ -13,7 +13,7 @@ public class HibernateSession {
 	
 	public static SessionFactory buildSessionFactory(){
 		Configuration configuration = new Configuration();
-		configuration.configure("/es/manuelvv/framework/bbdd/hibernate/hibernate.cfg.xml");
+		configuration.configure("/es/manuelvv/figuras/bbdd/hibernate/hibernate.cfg.xml");
 		
 		ServiceRegistry serviceRegistry = new StandardServiceRegistryBuilder().applySettings(configuration.getProperties()).build();
 		SessionFactory sessionFactory = configuration.buildSessionFactory(serviceRegistry);

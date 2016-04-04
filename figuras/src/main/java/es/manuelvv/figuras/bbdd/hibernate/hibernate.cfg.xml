@@ -33,6 +33,7 @@
         <property name="hbm2ddl.auto">Validate</property>
 
         <mapping resource="es/manuelvv/figuras/bbdd/hbm/usuarios.hbm.xml" />
+        <mapping resource="es/manuelvv/figuras/bbdd/hbm/persona.hbm.xml" />
     </session-factory>
 
 </hibernate-configuration>
