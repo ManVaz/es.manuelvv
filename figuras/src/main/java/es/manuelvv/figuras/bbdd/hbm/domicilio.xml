@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE hibernate-mapping PUBLIC 
+		"-//Hibernate/Hibernate Mapping DTD//EN"
+		"http://www.hibernate.org/dtd/hibernate-mapping-3.0.dtd">
+<hibernate-mapping>
+	<class name="es.manuelvv.figuras.usuario.model.Domicilio" table="tr_domicilios">
+		<id name="id" column="ID_DOMICILIO">
+			<generator class="native"></generator>
+		</id>
+		<property name="id_persona" type="long" column="ID_PERSONA"  not-null="true"/>
+		<property name="id_tipo_domicilio" type="long" column="ID_TIPO_DOMICILIO"  not-null="true"/>
+		<property name="calle" type="string" column="CALLE" not-null="true"/>
+		<property name="numero" type="int" column="NUMERO"/>
+		<property name="piso" type="string" column="PISO"/>
+		<property name="puerta" type="string" column="PUERTA"/>
+		<property name="resto" type="string" column="RESTO"/>
+		<property name="cod_postal" type="string" column="COD_POSTAL" not-null="true"/>
+		<property name="localidad" type="string" column="LOCALIDAD" not-null="true"/>
+		<property name="id_pais" type="int" column="ID_PAIS" not-null="true"/>
+		<property name="fec_alta" type="date" column="FEC_ALTA"/>
+		<property name="fec_modif" type="date" column="FEC_MODIF"/>
+		<property name="ctl_usuario" type="int" column="CTL_USUARIO"  not-null="true"/>
+		<property name="ctl_estado" type="int" column="CTL_ESTADO"  not-null="true"/>
+	</class>
+</hibernate-mapping>

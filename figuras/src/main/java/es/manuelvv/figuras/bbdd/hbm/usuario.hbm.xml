@@ -15,8 +15,9 @@
 		<property name="fec_alta" type="date" column="FEC_ALTA"/>
 		<property name="fec_modif" type="date" column="FEC_MODIF"/>
 		<property name="ctl_usuario" type="int" column="CTL_USUARIO"  not-null="true"/>
+		<property name="ctl_estado" type="int" column="CTL_ESTADO"  not-null="true"/>
 		<property name="id_persona" type="long" column="ID_PERSONA"  not-null="true"/>
 		
-		<one-to-one name="persona" cascade="merge" constrained="true"/>
+		<one-to-one name="persona" cascade="merge"/>
 	</class>
 </hibernate-mapping>

@@ -16,11 +16,10 @@ public class Usuario {
 	private Date fec_modif;
 	private Integer ctl_usuario;
 	private Long id_persona;
+	private Integer ctl_estado;	
 	private Persona persona;
 	
-	public Usuario() {
-		
-	}
+	public Usuario() {}
 
 	public Usuario(Long id,
 				   String alias,
@@ -30,6 +29,7 @@ public class Usuario {
 				   Integer intentos,
 				   Date fec_modif,
 				   Integer ctl_usuario,
+				   Integer ctl_estado,				   
 				   Long id_persona,
 				   Persona persona){
 		
@@ -43,6 +43,7 @@ public class Usuario {
 		setCtl_usuario(ctl_usuario);
 		setId_persona(id_persona);
 		setPersona(persona);
+		setCtl_estado(ctl_estado);
 		
 	}
 	
@@ -134,6 +135,13 @@ public class Usuario {
 		this.id_persona = id_persona;
 	}
 
-	
+	public Integer getCtl_estado() {
+		return ctl_estado;
+	}
+
+	public void setCtl_estado(Integer ctl_estado) {
+		this.ctl_estado = ctl_estado;
+	}
+
 }
 

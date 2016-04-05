@@ -40,6 +40,7 @@ public class TestUsuario {
 		usuario.setCtl_usuario(1);
 		usuario.setEmail("prueba@gmail.com");
 		usuario.setIntentos(0);
+		usuario.setCtl_estado(0);
 		
 		//Encriptacion
 		try{
@@ -74,12 +75,12 @@ public class TestUsuario {
 		}
 		
 		//Delete
-		try{
+		/*try{
 			usuarioDAO.delete(session, usuario);
 			personaDAO.delete(session, persona);
 		} catch (Exception ex){
 			fail("Error al borrar");
-		}
+		}*/
 		
 		session.getTransaction().commit();
 		session.close();
