@@ -1,8 +1,8 @@
-package es.manuelvv.figuras.persona.DAO;
+package es.manuelvv.figuras.DAO;
 
 import org.hibernate.Session;
 
-import es.manuelvv.figuras.persona.model.Persona;
+import es.manuelvv.figuras.model.Persona;
 
 public class PersonaDAO {
 

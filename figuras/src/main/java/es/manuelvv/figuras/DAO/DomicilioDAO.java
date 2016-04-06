@@ -1,7 +1,8 @@
-package es.manuelvv.figuras.domicilio.DAO;
+package es.manuelvv.figuras.DAO;
 
 import org.hibernate.Session;
-import es.manuelvv.figuras.domicilio.model.Domicilio;
+
+import es.manuelvv.figuras.model.Domicilio;
 
 public class DomicilioDAO {
 

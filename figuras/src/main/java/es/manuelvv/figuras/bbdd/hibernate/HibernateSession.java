@@ -22,7 +22,8 @@ public class HibernateSession {
 	}
 
 	public static Session getSession(){
-		if (session == null){
+		if (session == null || !session.isOpen()){
+			session = null;
 			session = sessionFactory.openSession();
 		}
 		return session;

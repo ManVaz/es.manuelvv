@@ -3,7 +3,7 @@
 		"-//Hibernate/Hibernate Mapping DTD//EN"
 		"http://www.hibernate.org/dtd/hibernate-mapping-3.0.dtd">
 <hibernate-mapping>
-	<class name="es.manuelvv.figuras.persona.model.Persona" table="tr_personas">
+	<class name="es.manuelvv.figuras.model.Persona" table="tr_personas">
 		<id name="id" column="ID_PERSONA">
 			<generator class="native"></generator>
 		</id>
@@ -16,5 +16,16 @@
 		<property name="ctl_usuario" type="int" column="CTL_USUARIO"  not-null="true"/>
 		<property name="fec_baja" type="date" column="FEC_BAJA"/>
 		<property name="ctl_estado" type="int" column="CTL_ESTADO"  not-null="true"/>
+	
+		<set name="domicilios" cascade="all">
+			<key column="id_persona" not-null="true"/>
+			<one-to-many class="es.manuelvv.figuras.model.Domicilio"/>	
+		</set>
+		
+		<set name="telefonos" cascade="all">
+			<key column="id_persona" not-null="true"/>
+			<one-to-many class="es.manuelvv.figuras.model.Telefono"/>	
+		</set>
+		
 	</class>
 </hibernate-mapping>

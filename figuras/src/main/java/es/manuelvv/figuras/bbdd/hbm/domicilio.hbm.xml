@@ -3,11 +3,10 @@
 		"-//Hibernate/Hibernate Mapping DTD//EN"
 		"http://www.hibernate.org/dtd/hibernate-mapping-3.0.dtd">
 <hibernate-mapping>
-	<class name="es.manuelvv.figuras.usuario.model.Domicilio" table="tr_domicilios">
+	<class name="es.manuelvv.figuras.model.Domicilio" table="tr_domicilios">
 		<id name="id" column="ID_DOMICILIO">
 			<generator class="native"></generator>
 		</id>
-		<property name="id_persona" type="long" column="ID_PERSONA"  not-null="true"/>
 		<property name="id_tipo_domicilio" type="long" column="ID_TIPO_DOMICILIO"  not-null="true"/>
 		<property name="calle" type="string" column="CALLE" not-null="true"/>
 		<property name="numero" type="int" column="NUMERO"/>
@@ -21,5 +20,6 @@
 		<property name="fec_modif" type="date" column="FEC_MODIF"/>
 		<property name="ctl_usuario" type="int" column="CTL_USUARIO"  not-null="true"/>
 		<property name="ctl_estado" type="int" column="CTL_ESTADO"  not-null="true"/>
+		
 	</class>
 </hibernate-mapping>

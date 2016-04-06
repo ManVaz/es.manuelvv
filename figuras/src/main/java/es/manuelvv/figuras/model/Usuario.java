@@ -1,8 +1,6 @@
-package es.manuelvv.figuras.usuario.model;
+package es.manuelvv.figuras.model;
 
 import java.util.Date;
-
-import es.manuelvv.figuras.persona.model.Persona;
 
 public class Usuario {
 
@@ -119,20 +117,20 @@ public class Usuario {
 		this.password = password;
 	}
 
-	public Persona getPersona() {
-		return persona;
-	}
-
-	public void setPersona(Persona persona) {
-		this.persona = persona;
-	}
-
 	public Long getId_persona() {
 		return id_persona;
 	}
 
 	public void setId_persona(Long id_persona) {
 		this.id_persona = id_persona;
+	}
+
+	public Persona getPersona() {
+		return persona;
+	}
+
+	public void setPersona(Persona persona) {
+		this.persona = persona;
 	}
 
 	public Integer getCtl_estado() {

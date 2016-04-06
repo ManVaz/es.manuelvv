@@ -1,12 +1,11 @@
-package es.manuelvv.figuras.domicilio.model;
+package es.manuelvv.figuras.model;
 
 import java.util.Date;
 
 public class Domicilio {
 
 	private Long id;
-	private int id_persona;
-	private int id_tipo_domicilio;
+	private Long id_tipo_domicilio;
 	private String calle;
 	private int numero;
 	private String piso;
@@ -20,6 +19,40 @@ public class Domicilio {
 	private int ctl_usuario;
 	private int ctl_estado;
 	
+	public Domicilio(){}
+	
+	public Domicilio(Long id, 
+					 Long id_tipo_domicilio, 
+					 String calle, 
+					 int numero, 
+					 String piso,
+					 String puerta, 
+					 String resto, 
+					 String cod_postal, 
+					 String localidad, 
+					 int id_pais, 
+					 Date fec_alta,
+					 Date fec_modif, 
+					 int ctl_usuario, 
+					 int ctl_estado) {
+
+		setId(id);
+		setId_tipo_domicilio(id_tipo_domicilio);
+		setCalle(calle);
+		setNumero(numero);
+		setPiso(piso);
+		setPuerta(puerta);
+		setResto(resto);
+		setCod_postal(cod_postal);
+		setLocalidad(localidad);
+		setId_pais(id_pais);
+		setFec_alta(fec_alta);
+		setFec_modif(fec_modif);
+		setCtl_usuario(ctl_usuario);
+		setCtl_estado(ctl_estado);
+		
+	}
+
 	public Long getId() {
 		return id;
 	}
@@ -28,19 +61,11 @@ public class Domicilio {
 		this.id = id;
 	}
 	
-	public int getId_persona() {
-		return id_persona;
-	}
-	
-	public void setId_persona(int id_persona) {
-		this.id_persona = id_persona;
-	}
-	
-	public int getId_tipo_domicilio() {
+	public Long getId_tipo_domicilio() {
 		return id_tipo_domicilio;
 	}
 	
-	public void setId_tipo_domicilio(int id_tipo_domicilio) {
+	public void setId_tipo_domicilio(Long id_tipo_domicilio) {
 		this.id_tipo_domicilio = id_tipo_domicilio;
 	}
 	

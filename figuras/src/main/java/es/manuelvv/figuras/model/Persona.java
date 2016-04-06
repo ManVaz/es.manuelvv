@@ -1,6 +1,9 @@
-package es.manuelvv.figuras.persona.model;
+package es.manuelvv.figuras.model;
 
-import java.util.Date;
+import java.util.*;
+
+import es.manuelvv.figuras.model.Domicilio;
+import es.manuelvv.figuras.model.Telefono;
 
 public class Persona {
 	
@@ -14,6 +17,8 @@ public class Persona {
 	private int ctl_usuario;
 	private Date fec_baja;
 	private int ctl_estado;
+	private Set<Domicilio> domicilios = new HashSet<Domicilio>();
+	private Set<Telefono> telefonos = new HashSet<Telefono>();
 	
 	public Persona(){}
 	
@@ -41,6 +46,16 @@ public class Persona {
 		
 	}
 
+	public void addDomicilio(Domicilio domicilio){
+		
+		domicilios.add(domicilio);
+	}
+	
+	public void addTelefono(Telefono telefono){
+		
+		telefonos.add(telefono);
+	}
+	
 	public Long getId() {
 		return id;
 	}
@@ -119,6 +134,22 @@ public class Persona {
 
 	public void setCtl_estado(int ctl_estado) {
 		this.ctl_estado = ctl_estado;
+	}
+
+	public Set<Domicilio> getDomicilios() {
+		return domicilios;
+	}
+
+	public void setDomicilios(Set<Domicilio> domicilios) {
+		this.domicilios = domicilios;
+	}
+
+	public Set<Telefono> getTelefonos() {
+		return telefonos;
+	}
+
+	public void setTelefonos(Set<Telefono> telefonos) {
+		this.telefonos = telefonos;
 	}
 	
 }

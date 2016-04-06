@@ -2,16 +2,16 @@ package es.manuelvv.figuras;
 
 import static org.junit.Assert.*;
 
+import java.util.Iterator;
+
 import org.junit.Test;
 import org.hibernate.SessionFactory;
 import org.hibernate.Session;
 
+import es.manuelvv.figuras.DAO.*;
 import es.manuelvv.figuras.bbdd.hibernate.HibernateSession;
-import es.manuelvv.figuras.usuario.DAO.UsuarioDAO;
-import es.manuelvv.figuras.usuario.model.Usuario;
+import es.manuelvv.figuras.model.*;
 import es.manuelvv.framework.utils.EncriptacionMD5;
-import es.manuelvv.figuras.persona.model.Persona;
-import es.manuelvv.figuras.persona.DAO.PersonaDAO;
 
 public class TestUsuario {
 
@@ -24,7 +24,14 @@ public class TestUsuario {
 		
 		Usuario usuario = new Usuario();
 		UsuarioDAO usuarioDAO = new UsuarioDAO();
-		PersonaDAO personaDAO = new PersonaDAO();
+		PersonaDAO per = new PersonaDAO();
+		
+		//Inicializamos los datos del usuario
+		usuario.setAlias("PRUEBA4");
+		usuario.setCtl_usuario(1);
+		usuario.setEmail("prueba4@gmail.com");
+		usuario.setIntentos(0);
+		usuario.setCtl_estado(0);
 		
 		//Creamos la persona
 		Persona persona = new Persona();
@@ -33,14 +40,49 @@ public class TestUsuario {
 		persona.setId_tipo_documento(1);
 		persona.setNombre("Prueba");
 		persona.setApellidos("Prueba");
-		persona.setNum_documento("1001");
+		persona.setNum_documento("1014");
 		
-		//Inicializamos los datos del usuario
-		usuario.setAlias("PRUEBA");
-		usuario.setCtl_usuario(1);
-		usuario.setEmail("prueba@gmail.com");
-		usuario.setIntentos(0);
-		usuario.setCtl_estado(0);
+		//Inicializamos los datos del domicilio
+		Domicilio domicilio = new Domicilio();
+		domicilio.setCalle("jj");
+		domicilio.setCod_postal("28943");
+		domicilio.setCtl_estado(1);
+		domicilio.setCtl_usuario(1);
+		domicilio.setId_pais(1);
+		domicilio.setId_tipo_domicilio((long)1);
+		domicilio.setLocalidad("dd");
+		domicilio.setNumero(1);
+		domicilio.setPiso("1");
+		domicilio.setPuerta("1");
+		persona.addDomicilio(domicilio);
+		
+		domicilio = new Domicilio();
+		domicilio.setCalle("jj");
+		domicilio.setCod_postal("28942");
+		domicilio.setCtl_estado(1);
+		domicilio.setCtl_usuario(1);
+		domicilio.setId_pais(1);
+		domicilio.setId_tipo_domicilio((long)1);
+		domicilio.setLocalidad("dd");
+		domicilio.setNumero(1);
+		domicilio.setPiso("1");
+		domicilio.setPuerta("1");
+		persona.addDomicilio(domicilio);
+		
+		//Inicializamos los telefonos
+		Telefono telefono = new Telefono();
+		telefono.setCtl_estado(1);
+		telefono.setTelefono("916074799");
+		telefono.setCtl_usuario(1);
+		persona.addTelefono(telefono);
+		
+		telefono = new Telefono();
+		telefono.setCtl_estado(1);
+		telefono.setTelefono("916074798");
+		telefono.setCtl_usuario(1);
+		persona.addTelefono(telefono);
+		
+		usuario.setPersona(persona);
 		
 		//Encriptacion
 		try{
@@ -51,9 +93,6 @@ public class TestUsuario {
 				
 		//Insert
 		try{
-			personaDAO.insert(session, persona);
-			usuario.setPersona(persona);
-			usuario.setId_persona(persona.getId());
 			usuarioDAO.insert(session, usuario);
 		} catch (Exception ex){
 			fail("Error al insertar");
@@ -61,8 +100,8 @@ public class TestUsuario {
 		
 		//Update
 		try{
-			usuario.setEmail("prueba2@gmail.com");
-			usuarioDAO.insert(session, usuario);
+			usuario.setEmail("prueba3@gmail.com");
+			usuarioDAO.update(session, usuario);
 		} catch (Exception ex){
 			fail("Error al actualiza");
 		}
@@ -75,17 +114,16 @@ public class TestUsuario {
 		}
 		
 		//Delete
-		/*try{
+		try{
 			usuarioDAO.delete(session, usuario);
-			personaDAO.delete(session, persona);
 		} catch (Exception ex){
 			fail("Error al borrar");
-		}*/
+		}
 		
 		session.getTransaction().commit();
 		session.close();
 	}
-
+	
 	@Test
 	public void testSelect() {
 		
@@ -100,6 +138,36 @@ public class TestUsuario {
 		//Select
 		try{
 			usuario = usuarioDAO.selectById(session, usuario.getId());
+			System.out.println(usuario.getPersona().getNombre());
+		} catch (Exception ex){
+			//fail("Error al seleccionar");
+		}
+		
+		session.getTransaction().commit();
+		session.close();
+	}
+
+	@Test
+	public void testSelectPersona() {
+		
+		Session session = HibernateSession.getSession();
+		session.beginTransaction();
+		
+		Persona persona = new Persona();
+		PersonaDAO personaDAO = new PersonaDAO();
+		
+		//Select
+		try{
+			persona = personaDAO.selectById(session, (long)1);
+		    for (Iterator<Domicilio> it = persona.getDomicilios().iterator(); it.hasNext(); ) {
+		    	Domicilio d = it.next();
+		        System.out.println(d.getLocalidad());
+		    }
+		    
+		    for (Iterator<Telefono> it = persona.getTelefonos().iterator(); it.hasNext(); ) {
+		    	Telefono f = it.next();
+		        System.out.println(f.getTelefono());
+		    }
 		} catch (Exception ex){
 			fail("Error al seleccionar");
 		}
@@ -107,4 +175,5 @@ public class TestUsuario {
 		session.getTransaction().commit();
 		session.close();
 	}
+	
 }

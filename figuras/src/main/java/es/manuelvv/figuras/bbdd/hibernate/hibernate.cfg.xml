@@ -35,6 +35,7 @@
         <mapping resource="es/manuelvv/figuras/bbdd/hbm/usuario.hbm.xml" />
         <mapping resource="es/manuelvv/figuras/bbdd/hbm/persona.hbm.xml" />
         <mapping resource="es/manuelvv/figuras/bbdd/hbm/domicilio.hbm.xml" />
+        <mapping resource="es/manuelvv/figuras/bbdd/hbm/telefono.hbm.xml" />
     </session-factory>
 
 </hibernate-configuration>

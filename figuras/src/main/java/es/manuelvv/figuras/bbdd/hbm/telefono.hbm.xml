@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE hibernate-mapping PUBLIC 
+		"-//Hibernate/Hibernate Mapping DTD//EN"
+		"http://www.hibernate.org/dtd/hibernate-mapping-3.0.dtd">
+<hibernate-mapping>
+	<class name="es.manuelvv.figuras.model.Telefono" table="tr_telefonos">
+		<id name="id" column="ID_TELEFONO">
+			<generator class="native"></generator>
+		</id>
+		<property name="telefono" type="string" column="TELEFONO"  not-null="true"/>
+		<property name="fec_alta" type="date" column="FEC_ALTA"/>
+		<property name="fec_modif" type="date" column="FEC_MODIF"/>
+		<property name="ctl_usuario" type="int" column="CTL_USUARIO"  not-null="true"/>
+		<property name="ctl_estado" type="int" column="CTL_ESTADO"  not-null="true"/>
+		
+	</class>
+</hibernate-mapping>
