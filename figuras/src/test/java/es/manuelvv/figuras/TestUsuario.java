@@ -9,8 +9,8 @@ import org.hibernate.SessionFactory;
 import org.hibernate.Session;
 
 import es.manuelvv.figuras.DAO.*;
-import es.manuelvv.figuras.bbdd.hibernate.HibernateSession;
 import es.manuelvv.figuras.model.*;
+import es.manuelvv.framework.bbdd.hibernate.HibernateSession;
 import es.manuelvv.framework.utils.EncriptacionMD5;
 
 public class TestUsuario {
@@ -92,11 +92,11 @@ public class TestUsuario {
 		}
 				
 		//Insert
-		try{
+		//try{
 			usuarioDAO.insert(session, usuario);
-		} catch (Exception ex){
+		/*} catch (Exception ex){
 			fail("Error al insertar");
-		}
+		}*/
 		
 		//Update
 		try{
@@ -157,7 +157,7 @@ public class TestUsuario {
 		PersonaDAO personaDAO = new PersonaDAO();
 		
 		//Select
-		try{
+	    try{
 			persona = personaDAO.selectById(session, (long)1);
 		    for (Iterator<Domicilio> it = persona.getDomicilios().iterator(); it.hasNext(); ) {
 		    	Domicilio d = it.next();
@@ -176,4 +176,22 @@ public class TestUsuario {
 		session.close();
 	}
 	
+	@Test
+	public void testSelectEstados() {
+		
+		Session session = HibernateSession.getSession();
+		session.beginTransaction();
+		
+		Estado estado = new Estado();
+		estado.setId((long)1);
+		estado.setIdioma("es");
+		EstadoDAO estadoDAO = new EstadoDAO();
+		
+		estado = estadoDAO.selectById(session, estado);
+		System.out.println(estado.getDesc_estado());
+		
+		session.getTransaction().commit();
+		session.close();
+		
+	}
 }

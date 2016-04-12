@@ -2,21 +2,59 @@ package es.manuelvv.figuras.model;
 
 import java.util.Date;
 
+import javax.persistence.Column;
+import javax.persistence.Entity;
+import javax.persistence.GeneratedValue;
+import javax.persistence.GenerationType;
+import javax.persistence.Id;
+import javax.persistence.Table;
+
+@Entity
+@Table(name="tr_domicilios")
 public class Domicilio {
 
+	@Id
+	@GeneratedValue(strategy = GenerationType.IDENTITY)
+	@Column(name = "id_domicilio")
 	private Long id;
+	
+	@Column(name = "id_tipo_domicilio")
 	private Long id_tipo_domicilio;
+	
+	@Column(name = "calle")
 	private String calle;
+	
+	@Column(name = "numero")
 	private int numero;
+	
+	@Column(name = "piso")
 	private String piso;
+	
+	@Column(name = "puerta")
 	private String puerta;
+	
+	@Column(name = "resto")
 	private String resto;
+	
+	@Column(name = "cod_postal")
 	private String cod_postal;
+	
+	@Column(name = "localidad")
 	private String localidad;
+	
+	@Column(name = "id_pais")
 	private int id_pais;
+	
+	@Column(name = "fec_alta")
 	private Date fec_alta;
+	
+	@Column(name = "fec_modif")
 	private Date fec_modif;
+	
+	@Column(name = "ctl_usuario")
 	private int ctl_usuario;
+	
+	@Column(name = "ctl_estado")
 	private int ctl_estado;
 	
 	public Domicilio(){}

@@ -2,13 +2,35 @@ package es.manuelvv.figuras.model;
 
 import java.util.Date;
 
+import javax.persistence.Column;
+import javax.persistence.Entity;
+import javax.persistence.GeneratedValue;
+import javax.persistence.GenerationType;
+import javax.persistence.Id;
+import javax.persistence.Table;
+
+@Entity
+@Table(name="tr_telefonos")
 public class Telefono {
 
+	@Id
+	@GeneratedValue(strategy = GenerationType.IDENTITY)
+	@Column(name = "id_telefono")
 	private Long id;
+	
+	@Column(name = "telefono")
 	private String telefono;
+	
+	@Column(name = "fec_alta")
 	private Date fec_alta;
+	
+	@Column(name = "fec_modif")
 	private Date fec_modif;
+	
+	@Column(name = "ctl_usuario")
 	private int ctl_usuario;
+	
+	@Column(name = "ctl_estado")
 	private int ctl_estado;
 	
 	public Telefono() {}

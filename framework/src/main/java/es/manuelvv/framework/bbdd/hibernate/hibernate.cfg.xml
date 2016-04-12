@@ -12,17 +12,11 @@
         <property name="connection.username">user_ld_desa</property>
         <property name="connection.password">Vaz3525air</property>
 
-        <!-- JDBC connection pool (use the built-in) -->
-        <property name="connection.pool_size">20</property>
-
         <!-- SQL dialect -->
         <property name="dialect">org.hibernate.dialect.MySQLDialect</property>
 
         <!-- Enable Hibernate's automatic session context management -->
         <property name="current_session_context_class">thread</property>
-
-        <!-- Disable the second-level cache  -->
-        <property name="cache.provider_class">org.hibernate.cache.NoCacheProvider</property>
 
 		<property name="transaction.factory_class">org.hibernate.transaction.JDBCTransactionFactory</property>
 		
@@ -32,10 +26,23 @@
         <!-- Drop and re-create the database schema on startup -->
         <property name="hbm2ddl.auto">Validate</property>
 
+		<!-- Cache -->
+		<property name="hibernate.cache.region.factory_class">org.hibernate.cache.ehcache.EhCacheRegionFactory</property>
+		
+		<property name="cache.provider_class">org.hibernate.cache.EhCacheProvider</property>  
+		<property name="hibernate.cache.use_second_level_cache">true</property>  
+		<property name="hibernate.cache.use_query_cache">false</property>
+		<property name="hibernate.cache.provider_configuration_file_resource_path">ehcache.xml</property>
+
         <mapping resource="es/manuelvv/figuras/bbdd/hbm/usuario.hbm.xml" />
-        <mapping resource="es/manuelvv/figuras/bbdd/hbm/persona.hbm.xml" />
-        <mapping resource="es/manuelvv/figuras/bbdd/hbm/domicilio.hbm.xml" />
-        <mapping resource="es/manuelvv/figuras/bbdd/hbm/telefono.hbm.xml" />
+        <!--<mapping resource="es/manuelvv/figuras/bbdd/hbm/persona.hbm.xml" />
+         <mapping resource="es/manuelvv/figuras/bbdd/hbm/domicilio.hbm.xml" /> 
+        <mapping resource="es/manuelvv/figuras/bbdd/hbm/telefono.hbm.xml" /> -->
+        
+        <mapping class="es.manuelvv.figuras.model.Estado"/>
+        <mapping class="es.manuelvv.figuras.model.Domicilio"/>  
+        <mapping class="es.manuelvv.figuras.model.Telefono"/> 
+        <mapping class="es.manuelvv.figuras.model.Persona"/> 
     </session-factory>
 
 </hibernate-configuration>

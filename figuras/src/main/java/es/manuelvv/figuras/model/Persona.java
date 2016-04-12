@@ -2,23 +2,56 @@ package es.manuelvv.figuras.model;
 
 import java.util.*;
 
+import javax.persistence.*;
+
 import es.manuelvv.figuras.model.Domicilio;
 import es.manuelvv.figuras.model.Telefono;
 
+@Entity
+@Table(name="tr_personas")
 public class Persona {
 	
+	@Id
+	@GeneratedValue(strategy = GenerationType.IDENTITY)
+	@Column(name = "id_persona")
 	private Long id;
+	
+	@Column(name = "nombre")
 	private String nombre;
+	
+	@Column(name = "apellidos")
 	private String apellidos;
+	
+	@Column(name = "id_tipo_documento")
 	private int id_tipo_documento;
+	
+	@Column(name = "num_documento")
 	private String num_documento;
+	
+	@Column(name = "fec_alta")
 	private Date fec_alta;
+	
+	@Column(name = "fec_modif")
 	private Date fec_modif;
+	
+	@Column(name = "ctl_usuario")
 	private int ctl_usuario;
+	
+	@Column(name = "fec_baja")
 	private Date fec_baja;
+	
+	@Column(name = "ctl_estado")
 	private int ctl_estado;
-	private Set<Domicilio> domicilios = new HashSet<Domicilio>();
-	private Set<Telefono> telefonos = new HashSet<Telefono>();
+	
+	@OneToMany(cascade = CascadeType.ALL,
+			   fetch = FetchType.LAZY)
+	@JoinColumn(name="id_persona")
+	private List<Domicilio> domicilios = new ArrayList<Domicilio>();
+	
+	@OneToMany(cascade = CascadeType.ALL,
+			   fetch = FetchType.LAZY)
+	@JoinColumn(name="id_persona")
+	private List<Telefono> telefonos = new ArrayList<Telefono>();
 	
 	public Persona(){}
 	
@@ -136,19 +169,19 @@ public class Persona {
 		this.ctl_estado = ctl_estado;
 	}
 
-	public Set<Domicilio> getDomicilios() {
+	public List<Domicilio> getDomicilios() {
 		return domicilios;
 	}
 
-	public void setDomicilios(Set<Domicilio> domicilios) {
+	public void setDomicilios(List<Domicilio> domicilios) {
 		this.domicilios = domicilios;
 	}
 
-	public Set<Telefono> getTelefonos() {
+	public List<Telefono> getTelefonos() {
 		return telefonos;
 	}
 
-	public void setTelefonos(Set<Telefono> telefonos) {
+	public void setTelefonos(List<Telefono> telefonos) {
 		this.telefonos = telefonos;
 	}
 	
