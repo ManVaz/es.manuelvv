@@ -34,8 +34,8 @@
 		<property name="hibernate.cache.use_query_cache">false</property>
 		<property name="hibernate.cache.provider_configuration_file_resource_path">ehcache.xml</property>
 
-        <mapping resource="es/manuelvv/figuras/bbdd/hbm/usuario.hbm.xml" />
-        <!--<mapping resource="es/manuelvv/figuras/bbdd/hbm/persona.hbm.xml" />
+         <!--<mapping resource="es/manuelvv/figuras/bbdd/hbm/usuario.hbm.xml" />
+       <mapping resource="es/manuelvv/figuras/bbdd/hbm/persona.hbm.xml" />
          <mapping resource="es/manuelvv/figuras/bbdd/hbm/domicilio.hbm.xml" /> 
         <mapping resource="es/manuelvv/figuras/bbdd/hbm/telefono.hbm.xml" /> -->
         
@@ -43,6 +43,7 @@
         <mapping class="es.manuelvv.figuras.model.Domicilio"/>  
         <mapping class="es.manuelvv.figuras.model.Telefono"/> 
         <mapping class="es.manuelvv.figuras.model.Persona"/> 
+        <mapping class="es.manuelvv.figuras.model.Usuario"/> 
     </session-factory>
 
 </hibernate-configuration>

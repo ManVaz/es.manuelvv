@@ -45,12 +45,12 @@ public class Persona {
 	
 	@OneToMany(cascade = CascadeType.ALL,
 			   fetch = FetchType.LAZY)
-	@JoinColumn(name="id_persona")
+	@JoinColumn(name="id_persona", nullable=false)
 	private List<Domicilio> domicilios = new ArrayList<Domicilio>();
 	
 	@OneToMany(cascade = CascadeType.ALL,
 			   fetch = FetchType.LAZY)
-	@JoinColumn(name="id_persona")
+	@JoinColumn(name="id_persona", nullable=false)
 	private List<Telefono> telefonos = new ArrayList<Telefono>();
 	
 	public Persona(){}

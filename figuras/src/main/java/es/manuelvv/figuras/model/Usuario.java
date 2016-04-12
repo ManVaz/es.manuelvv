@@ -2,19 +2,46 @@ package es.manuelvv.figuras.model;
 
 import java.util.Date;
 
+import javax.persistence.*;
+
+@Entity
+@Table(name="tr_usuarios")
 public class Usuario {
 
+	@Id
+	@GeneratedValue(strategy = GenerationType.IDENTITY)
+	@Column(name = "id_usuario")
 	private Long id;
+	
+	@Column(name = "alias")	
 	private String alias;
+	
+	@Column(name = "email")	
 	private String email;
+	
+	@Column(name = "fec_baja")
 	private Date fec_baja;
+	
+	@Column(name = "intentos")
 	private Integer intentos;
+	
+	@Column(name = "password")
 	private String password;
+	
+	@Column(name = "fec_alta")
 	private Date fec_alta;
+	
+	@Column(name = "fec_modif")
 	private Date fec_modif;
+	
+	@Column(name = "ctl_usuario")
 	private Integer ctl_usuario;
-	private Long id_persona;
-	private Integer ctl_estado;	
+	
+	@Column(name = "ctl_estado")
+	private Integer ctl_estado;
+	
+	@OneToOne(cascade=CascadeType.ALL)
+	@JoinColumn(name="id_persona")
 	private Persona persona;
 	
 	public Usuario() {}
@@ -27,8 +54,7 @@ public class Usuario {
 				   Integer intentos,
 				   Date fec_modif,
 				   Integer ctl_usuario,
-				   Integer ctl_estado,				   
-				   Long id_persona,
+				   Integer ctl_estado,	
 				   Persona persona){
 		
 		setId(id);
@@ -39,7 +65,6 @@ public class Usuario {
 		setIntentos(intentos);
 		setFec_modif(fec_modif);
 		setCtl_usuario(ctl_usuario);
-		setId_persona(id_persona);
 		setPersona(persona);
 		setCtl_estado(ctl_estado);
 		
@@ -115,14 +140,6 @@ public class Usuario {
 
 	public void setPassword(String password) {
 		this.password = password;
-	}
-
-	public Long getId_persona() {
-		return id_persona;
-	}
-
-	public void setId_persona(Long id_persona) {
-		this.id_persona = id_persona;
 	}
 
 	public Persona getPersona() {
