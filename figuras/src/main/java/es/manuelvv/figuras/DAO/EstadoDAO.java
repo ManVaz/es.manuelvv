@@ -5,8 +5,8 @@ import es.manuelvv.figuras.model.Estado;
 
 public class EstadoDAO {
 
-	public Estado selectById(Session session, Estado estadoS) {
-		Estado estado = (Estado) session.get(Estado.class, estadoS);
+	public Estado selectById(Session session, Estado estados) {
+		Estado estado = (Estado) session.get(Estado.class, estados);
 		return estado;
 	}
 	

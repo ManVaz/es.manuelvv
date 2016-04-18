@@ -24,7 +24,6 @@ public class TestUsuario {
 		
 		Usuario usuario = new Usuario();
 		UsuarioDAO usuarioDAO = new UsuarioDAO();
-		PersonaDAO per = new PersonaDAO();
 		
 		//Inicializamos los datos del usuario
 		usuario.setAlias("PRUEBA4");
@@ -92,11 +91,11 @@ public class TestUsuario {
 		}
 				
 		//Insert
-		//try{
+		try{
 			usuarioDAO.insert(session, usuario);
-		/*} catch (Exception ex){
+		} catch (Exception ex){
 			fail("Error al insertar");
-		}*/
+		}
 		
 		//Update
 		try{
@@ -189,6 +188,61 @@ public class TestUsuario {
 		
 		estado = estadoDAO.selectById(session, estado);
 		System.out.println(estado.getDesc_estado());
+		
+		session.getTransaction().commit();
+		session.close();
+		
+	}
+	
+	@Test
+	public void testSelectPaises() {
+		
+		Session session = HibernateSession.getSession();
+		session.beginTransaction();
+		
+		Pais pais = new Pais();
+		PaisDAO paisDAO = new PaisDAO();
+		
+		pais = paisDAO.selectById(session, (long)1);
+		System.out.println(pais.getDesc_pais());
+		
+		session.getTransaction().commit();
+		session.close();
+		
+	}
+	
+	@Test
+	public void testSelectTipoDocumento() {
+		
+		Session session = HibernateSession.getSession();
+		session.beginTransaction();
+		
+		TipoDocumento tipo_documento = new TipoDocumento();
+		tipo_documento.setId((long)1);
+		tipo_documento.setIdioma("es");
+		TipoDocumentoDAO tipo_documentoDAO = new TipoDocumentoDAO();
+		
+		tipo_documento = tipo_documentoDAO.selectById(session, tipo_documento);
+		System.out.println(tipo_documento.getDesc_tipo_documento());
+		
+		session.getTransaction().commit();
+		session.close();
+		
+	}
+	
+	@Test
+	public void testSelectTipoDomicilio() {
+		
+		Session session = HibernateSession.getSession();
+		session.beginTransaction();
+		
+		TipoDomicilio tipoDomicilio = new TipoDomicilio();
+		tipoDomicilio.setId((long)1);
+		tipoDomicilio.setIdioma("es");
+		TipoDomicilioDAO tipoDomicilioDAO = new TipoDomicilioDAO();
+		
+		tipoDomicilio = tipoDomicilioDAO.selectById(session, tipoDomicilio);
+		System.out.println(tipoDomicilio.getDesc_tipo_domicilio());
 		
 		session.getTransaction().commit();
 		session.close();
