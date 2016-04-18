@@ -18,8 +18,7 @@ public class TestUsuario {
 	@Test
 	public void test() {
 		
-		SessionFactory sessionfactory = HibernateSession.getSessionfactory();
-		Session session = sessionfactory.openSession();
+		Session session = HibernateSession.getSession();
 		session.beginTransaction();
 		
 		Usuario usuario = new Usuario();
@@ -120,7 +119,7 @@ public class TestUsuario {
 		}
 		
 		session.getTransaction().commit();
-		session.close();
+
 	}
 	
 	@Test
@@ -143,7 +142,7 @@ public class TestUsuario {
 		}
 		
 		session.getTransaction().commit();
-		session.close();
+
 	}
 
 	@Test
@@ -172,7 +171,7 @@ public class TestUsuario {
 		}
 		
 		session.getTransaction().commit();
-		session.close();
+
 	}
 	
 	@Test
@@ -190,7 +189,6 @@ public class TestUsuario {
 		System.out.println(estado.getDesc_estado());
 		
 		session.getTransaction().commit();
-		session.close();
 		
 	}
 	
@@ -207,7 +205,6 @@ public class TestUsuario {
 		System.out.println(pais.getDesc_pais());
 		
 		session.getTransaction().commit();
-		session.close();
 		
 	}
 	
@@ -226,7 +223,6 @@ public class TestUsuario {
 		System.out.println(tipo_documento.getDesc_tipo_documento());
 		
 		session.getTransaction().commit();
-		session.close();
 		
 	}
 	
@@ -245,7 +241,6 @@ public class TestUsuario {
 		System.out.println(tipoDomicilio.getDesc_tipo_domicilio());
 		
 		session.getTransaction().commit();
-		session.close();
-		
+
 	}
 }

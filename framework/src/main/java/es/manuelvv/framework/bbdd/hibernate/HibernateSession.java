@@ -19,6 +19,7 @@ public class HibernateSession {
 		SessionFactory sessionFactory = configuration.buildSessionFactory(serviceRegistry);
 		
 		return sessionFactory;
+		
 	}
 
 	public static Session getSession(){
