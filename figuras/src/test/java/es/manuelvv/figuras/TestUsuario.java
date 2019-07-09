@@ -5,7 +5,6 @@ import static org.junit.Assert.*;
 import java.util.Iterator;
 
 import org.junit.Test;
-import org.hibernate.SessionFactory;
 import org.hibernate.Session;
 
 import es.manuelvv.figuras.DAO.*;
