@@ -101,7 +101,7 @@ public class Mail {
 		
 		message.saveChanges(); 
 		
-		Transport transport = session.getTransport("smtp");
+		Transport transport = session.getTransport("smtps");
 		transport.connect(getHost(), getUsuario(), getPassword());
 		transport.sendMessage(message, message.getAllRecipients());
 		transport.close();
