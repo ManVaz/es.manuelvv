@@ -6,13 +6,13 @@ import es.manuelvv.figuras.model.Persona;
 
 public class PersonaDAO {
 
-	public Persona selectById(Session session, Long id) {
+	public Persona selectById(Session session, int id) {
 		Persona persona = (Persona) session.get(Persona.class, id);
 		return persona;
 	}
 	
 	public void insert(Session session, Persona persona){
-		Long id = (Long) session.save(persona);
+		int id = (int) session.save(persona);
 		persona.setId(id);
 	}
 

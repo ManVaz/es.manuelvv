@@ -12,7 +12,7 @@ public class TipoDocumentoDAO {
 	}
 	
 	public void insert(Session session, TipoDocumento tipo_documento){
-		Long id = (Long) session.save(tipo_documento);
+		int id = (int) session.save(tipo_documento);
 		tipo_documento.setId(id);
 	}
 

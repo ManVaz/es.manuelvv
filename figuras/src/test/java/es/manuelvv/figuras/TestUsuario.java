@@ -46,7 +46,7 @@ public class TestUsuario {
 		domicilio.setCtl_estado(1);
 		domicilio.setCtl_usuario(1);
 		domicilio.setId_pais(1);
-		domicilio.setId_tipo_domicilio((long)1);
+		domicilio.setId_tipo_domicilio(1);
 		domicilio.setLocalidad("dd");
 		domicilio.setNumero(1);
 		domicilio.setPiso("1");
@@ -59,7 +59,7 @@ public class TestUsuario {
 		domicilio.setCtl_estado(1);
 		domicilio.setCtl_usuario(1);
 		domicilio.setId_pais(1);
-		domicilio.setId_tipo_domicilio((long)1);
+		domicilio.setId_tipo_domicilio(1);
 		domicilio.setLocalidad("dd");
 		domicilio.setNumero(1);
 		domicilio.setPiso("1");
@@ -130,7 +130,7 @@ public class TestUsuario {
 		Usuario usuario = new Usuario();
 		UsuarioDAO usuarioDAO = new UsuarioDAO();
 				
-		usuario.setId((long) 1);
+		usuario.setId(1);
 		
 		//Select
 		try{
@@ -155,7 +155,7 @@ public class TestUsuario {
 		
 		//Select
 	    try{
-			persona = personaDAO.selectById(session, (long)1);
+			persona = personaDAO.selectById(session, 1);
 		    for (Iterator<Domicilio> it = persona.getDomicilios().iterator(); it.hasNext(); ) {
 		    	Domicilio d = it.next();
 		        System.out.println(d.getLocalidad());
@@ -180,7 +180,7 @@ public class TestUsuario {
 		session.beginTransaction();
 		
 		Estado estado = new Estado();
-		estado.setId((long)1);
+		estado.setId(1);
 		estado.setIdioma("es");
 		EstadoDAO estadoDAO = new EstadoDAO();
 		
@@ -200,7 +200,7 @@ public class TestUsuario {
 		Pais pais = new Pais();
 		PaisDAO paisDAO = new PaisDAO();
 		
-		pais = paisDAO.selectById(session, (long)1);
+		pais = paisDAO.selectById(session, 1);
 		System.out.println(pais.getDesc_pais());
 		
 		session.getTransaction().commit();
@@ -214,7 +214,7 @@ public class TestUsuario {
 		session.beginTransaction();
 		
 		TipoDocumento tipo_documento = new TipoDocumento();
-		tipo_documento.setId((long)1);
+		tipo_documento.setId(1);
 		tipo_documento.setIdioma("es");
 		TipoDocumentoDAO tipo_documentoDAO = new TipoDocumentoDAO();
 		
@@ -232,7 +232,7 @@ public class TestUsuario {
 		session.beginTransaction();
 		
 		TipoDomicilio tipoDomicilio = new TipoDomicilio();
-		tipoDomicilio.setId((long)1);
+		tipoDomicilio.setId(1);
 		tipoDomicilio.setIdioma("es");
 		TipoDomicilioDAO tipoDomicilioDAO = new TipoDomicilioDAO();
 		

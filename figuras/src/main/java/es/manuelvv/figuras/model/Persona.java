@@ -14,7 +14,7 @@ public class Persona {
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	@Column(name = "id_persona")
-	private Long id;
+	private int id;
 	
 	@Column(name = "nombre")
 	private String nombre;
@@ -55,7 +55,7 @@ public class Persona {
 	
 	public Persona(){}
 	
-	public Persona(Long id,
+	public Persona(int id,
 				   String nombre,
 				   String apellidos,
 				   Integer id_tipo_documento,
@@ -89,11 +89,11 @@ public class Persona {
 		telefonos.add(telefono);
 	}
 	
-	public Long getId() {
+	public int getId() {
 		return id;
 	}
 
-	public void setId(Long id) {
+	public void setId(int id) {
 		this.id = id;
 	}
 

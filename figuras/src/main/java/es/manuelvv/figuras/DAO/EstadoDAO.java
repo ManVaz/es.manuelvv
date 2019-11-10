@@ -11,7 +11,7 @@ public class EstadoDAO {
 	}
 	
 	public void insert(Session session, Estado estado){
-		Long id = (Long) session.save(estado);
+		int id = (int) session.save(estado);
 		estado.setId(id);
 	}
 

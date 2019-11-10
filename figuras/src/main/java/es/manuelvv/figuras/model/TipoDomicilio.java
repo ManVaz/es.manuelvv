@@ -16,7 +16,7 @@ implements Serializable{
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	@Column(name = "id_tipo_domicilio")
-	private Long id;
+	private int id;
 	
 	@Id
 	@Column(name = "idioma")
@@ -39,7 +39,7 @@ implements Serializable{
 	
 	public TipoDomicilio() {}
 	
-	public TipoDomicilio(Long id,
+	public TipoDomicilio(int id,
 						 String idioma,
 						 String desc_tipo_domicilio,
 						 Date fec_alta,
@@ -55,11 +55,11 @@ implements Serializable{
 		this.setCtl_estado(ctl_estado);
 	}
 
-	public Long getId() {
+	public int getId() {
 		return id;
 	}
 
-	public void setId(Long id) {
+	public void setId(int id) {
 		this.id = id;
 	}
 

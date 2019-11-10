@@ -11,7 +11,7 @@ public class Usuario {
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	@Column(name = "id_usuario")
-	private Long id;
+	private int id;
 	
 	@Column(name = "alias")	
 	private String alias;
@@ -46,7 +46,7 @@ public class Usuario {
 	
 	public Usuario() {}
 
-	public Usuario(Long id,
+	public Usuario(int id,
 				   String alias,
 				   String email,
 				   Date fec_alta,
@@ -70,11 +70,11 @@ public class Usuario {
 		
 	}
 	
-	public Long getId() {
+	public int getId() {
 		return id;
 	}
 
-	public void setId(Long id) {
+	public void setId(int id) {
 		this.id = id;
 	}
 

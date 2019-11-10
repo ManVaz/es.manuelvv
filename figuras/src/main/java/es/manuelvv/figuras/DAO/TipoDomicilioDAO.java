@@ -12,7 +12,7 @@ public class TipoDomicilioDAO {
 	}
 	
 	public void insert(Session session, TipoDomicilio tipoDomicilio){
-		Long id = (Long) session.save(tipoDomicilio);
+		int id = (int) session.save(tipoDomicilio);
 		tipoDomicilio.setId(id);
 	}
 

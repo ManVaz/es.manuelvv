@@ -6,13 +6,13 @@ import es.manuelvv.figuras.model.Domicilio;
 
 public class DomicilioDAO {
 
-	public Domicilio selectById(Session session, Long id) {
+	public Domicilio selectById(Session session, int id) {
 		Domicilio domicilio = (Domicilio) session.get(Domicilio.class, id);
 		return domicilio;
 	}
 	
 	public void insert(Session session, Domicilio domicilio){
-		Long id = (Long) session.save(domicilio);
+		int id = (int) session.save(domicilio);
 		domicilio.setId(id);
 	}
 

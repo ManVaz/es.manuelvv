@@ -16,10 +16,10 @@ public class Domicilio {
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	@Column(name = "id_domicilio")
-	private Long id;
+	private int id;
 	
 	@Column(name = "id_tipo_domicilio")
-	private Long id_tipo_domicilio;
+	private int id_tipo_domicilio;
 	
 	@Column(name = "calle")
 	private String calle;
@@ -59,8 +59,8 @@ public class Domicilio {
 	
 	public Domicilio(){}
 	
-	public Domicilio(Long id, 
-					 Long id_tipo_domicilio, 
+	public Domicilio(int id, 
+					 int id_tipo_domicilio, 
 					 String calle, 
 					 int numero, 
 					 String piso,
@@ -91,19 +91,19 @@ public class Domicilio {
 		
 	}
 
-	public Long getId() {
+	public int getId() {
 		return id;
 	}
 	
-	public void setId(Long id) {
+	public void setId(int id) {
 		this.id = id;
 	}
 	
-	public Long getId_tipo_domicilio() {
+	public int getId_tipo_domicilio() {
 		return id_tipo_domicilio;
 	}
 	
-	public void setId_tipo_domicilio(Long id_tipo_domicilio) {
+	public void setId_tipo_domicilio(int id_tipo_domicilio) {
 		this.id_tipo_domicilio = id_tipo_domicilio;
 	}
 	

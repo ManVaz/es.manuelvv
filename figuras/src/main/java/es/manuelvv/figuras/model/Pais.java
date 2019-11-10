@@ -12,7 +12,7 @@ public class Pais {
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	@Column(name = "id_paises")
-	private Long id;
+	private int id;
 	
 	@Column(name = "cod_pais")
 	private String cod_pais;
@@ -34,7 +34,7 @@ public class Pais {
 	
 	public Pais() {}
 	
-	public Pais(Long id,
+	public Pais(int id,
 				String cod_pais,
 				String desc_pais,
 				Date fec_alta,
@@ -50,11 +50,11 @@ public class Pais {
 		this.setCtl_estado(ctl_estado);
 	}
 
-	public Long getId() {
+	public int getId() {
 		return id;
 	}
 
-	public void setId(Long id) {
+	public void setId(int id) {
 		this.id = id;
 	}
 

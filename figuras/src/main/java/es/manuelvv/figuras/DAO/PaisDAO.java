@@ -6,13 +6,13 @@ import es.manuelvv.figuras.model.Pais;
 
 public class PaisDAO {
 
-	public Pais selectById(Session session, Long id) {
+	public Pais selectById(Session session, int id) {
 		Pais pais = (Pais) session.get(Pais.class, id);
 		return pais;
 	}
 	
 	public void insert(Session session, Pais pais){
-		Long id = (Long) session.save(pais);
+		int id = (int) session.save(pais);
 		pais.setId(id);
 	}
 
