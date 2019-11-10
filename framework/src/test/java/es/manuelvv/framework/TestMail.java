@@ -17,10 +17,10 @@ public class TestMail {
 	public void test() {
 		try{
 			
-			Mail email = new Mail("smtp.gmail.com",587,"manuelvv@gmail.com","OwK1j90Nq6Vx");
+			Mail email = new Mail("smtp.strato.com",25,"webmaster@manuelvv.es","Vaz3525air");
 			email.setAsunto("Prueba");
-			email.setTo(new InternetAddress("manuelvvusa@gmail.com"));
-			email.setFrom(new InternetAddress("manuelvv@gmail.com"));
+			email.setTo(new InternetAddress("manuelvv@gmail.com"));
+			email.setFrom(new InternetAddress("webmaster@manuelvv.es"));
 			email.setTexto("Prueba");
 			email.envio();			
 		}catch (Exception ex){

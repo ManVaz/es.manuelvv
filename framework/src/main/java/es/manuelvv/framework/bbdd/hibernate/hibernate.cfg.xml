@@ -7,8 +7,8 @@
     
     <session-factory>
         <!-- Database connection settings -->
-        <property name="connection.driver_class">com.mysql.jdbc.Driver</property>
-        <property name="connection.url">jdbc:mysql://192.168.1.31:3306/app_ld_desa</property>
+        <property name="connection.driver_class">org.mariadb.jdbc.Driver</property>
+        <property name="connection.url">jdbc:mysql://192.168.1.31:3306/app</property>
         <property name="connection.username">app_ld</property>
         <property name="connection.password">Vaz3525air</property>
 
@@ -24,7 +24,7 @@
         <property name="show_sql">true</property>
 
         <!-- Drop and re-create the database schema on startup -->
-        <property name="hbm2ddl.auto">Validate</property>
+        <property name="hbm2ddl.auto">validate</property>
 
 		<!-- Pool 
 		<property name="hibernate.connection.provider_class">org.hibernate.c3p0.internal.C3P0ConnectionProvider</property>
@@ -32,9 +32,9 @@
 		<property name="hibernate.c3p0.max_size">100</property>
 		<property name="hibernate.c3p0.timeout">120</property>
 		<property name="hibernate.c3p0.max_statements">100</property>
-		<property name="temp.use_jdbc_metadata_defaults">false</property>
+		<property name="temp.use_jdbc_metadata_defaults">false</property>-->
 		
-		<!-- Cache 
+		<!-- Cache -->
 		<property name="hibernate.cache.region.factory_class">org.hibernate.cache.ehcache.EhCacheRegionFactory</property>
 		
 		<property name="cache.provider_class">org.hibernate.cache.EhCacheProvider</property>  
