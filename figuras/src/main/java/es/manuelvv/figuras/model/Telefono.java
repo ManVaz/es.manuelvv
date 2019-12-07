@@ -1,17 +1,16 @@
 package es.manuelvv.figuras.model;
 
+import java.io.Serializable;
 import java.util.Date;
 
-import javax.persistence.Column;
-import javax.persistence.Entity;
-import javax.persistence.GeneratedValue;
-import javax.persistence.GenerationType;
-import javax.persistence.Id;
-import javax.persistence.Table;
+import javax.persistence.*;
 
 @Entity
 @Table(name="tr_telefonos")
-public class Telefono {
+public class Telefono 
+implements Serializable{
+
+	private static final long serialVersionUID = 1L;
 
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
@@ -22,16 +21,16 @@ public class Telefono {
 	private String telefono;
 	
 	@Column(name = "fec_alta")
-	private Date fec_alta;
+	private Date fecAlta;
 	
 	@Column(name = "fec_modif")
-	private Date fec_modif;
+	private Date fecModif;
 	
 	@Column(name = "ctl_usuario")
-	private int ctl_usuario;
+	private int ctlUsuario;
 	
 	@Column(name = "ctl_estado")
-	private int ctl_estado;
+	private int ctlEstado;
 	
 	public Telefono() {}
 
@@ -57,36 +56,40 @@ public class Telefono {
 		this.telefono = telefono;
 	}
 
-	public Date getFec_alta() {
-		return fec_alta;
+	public Date getFecAlta() {
+		return fecAlta;
 	}
 
-	public void setFec_alta(Date fec_alta) {
-		this.fec_alta = fec_alta;
+	public void setFecAlta(Date fecAlta) {
+		this.fecAlta = fecAlta;
 	}
 
-	public Date getFec_modif() {
-		return fec_modif;
+	public Date getFecModif() {
+		return fecModif;
 	}
 
-	public void setFec_modif(Date fec_modif) {
-		this.fec_modif = fec_modif;
+	public void setFecModif(Date fecModif) {
+		this.fecModif = fecModif;
 	}
 
-	public int getCtl_usuario() {
-		return ctl_usuario;
+	public int getCtlUsuario() {
+		return ctlUsuario;
 	}
 
-	public void setCtl_usuario(int ctl_usuario) {
-		this.ctl_usuario = ctl_usuario;
+	public void setCtlUsuario(int ctlUsuario) {
+		this.ctlUsuario = ctlUsuario;
 	}
 
-	public int getCtl_estado() {
-		return ctl_estado;
+	public int getCtlEstado() {
+		return ctlEstado;
 	}
 
-	public void setCtl_estado(int ctl_estado) {
-		this.ctl_estado = ctl_estado;
+	public void setCtlEstado(int ctlEstado) {
+		this.ctlEstado = ctlEstado;
 	}
 
+	public static long getSerialversionuid() {
+		return serialVersionUID;
+	}
+	
 }

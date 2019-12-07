@@ -1,13 +1,18 @@
 package es.manuelvv.figuras.model;
 
+import java.io.Serializable;
 import java.util.Date;
+import java.util.Objects;
 
 import javax.persistence.*;
 
 @Entity
 @Table(name="tr_usuarios")
-public class Usuario {
+public class Usuario 
+implements Serializable{
 
+	private static final long serialVersionUID = 1L;
+	
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	@Column(name = "id_usuario")
@@ -20,7 +25,7 @@ public class Usuario {
 	private String email;
 	
 	@Column(name = "fec_baja")
-	private Date fec_baja;
+	private Date fecBaja;
 	
 	@Column(name = "intentos")
 	private Integer intentos;
@@ -29,16 +34,16 @@ public class Usuario {
 	private String password;
 	
 	@Column(name = "fec_alta")
-	private Date fec_alta;
+	private Date fecAlta;
 	
-	@Column(name = "fec_modif")
-	private Date fec_modif;
+	@Column(name = "fecModif")
+	private Date fecModif;
 	
 	@Column(name = "ctl_usuario")
-	private Integer ctl_usuario;
+	private Integer ctlUsuario;
 	
 	@Column(name = "ctl_estado")
-	private Integer ctl_estado;
+	private Integer ctlEstado;
 	
 	@OneToOne(cascade=CascadeType.ALL)
 	@JoinColumn(name="id_persona")
@@ -49,27 +54,51 @@ public class Usuario {
 	public Usuario(int id,
 				   String alias,
 				   String email,
-				   Date fec_alta,
-				   Date fec_baja,
+				   Date fecAlta,
+				   Date fecBaja,
 				   Integer intentos,
-				   Date fec_modif,
-				   Integer ctl_usuario,
-				   Integer ctl_estado,	
+				   Date fecModif,
+				   Integer ctlUsuario,
+				   Integer ctlEstado,	
 				   Persona persona){
 		
 		setId(id);
 		setAlias(alias);
 		setEmail(email);
-		setFec_alta(fec_alta);
-		setFec_baja(fec_baja);
+		setFecAlta(fecAlta);
+		setFecBaja(fecBaja);
 		setIntentos(intentos);
-		setFec_modif(fec_modif);
-		setCtl_usuario(ctl_usuario);
+		setFecModif(fecModif);
+		setCtlUsuario(ctlUsuario);
 		setPersona(persona);
-		setCtl_estado(ctl_estado);
+		setCtlEstado(ctlEstado);
 		
 	}
-	
+		
+	@Override
+	public String toString() {
+		return "Usuario [alias=" + alias + ", numDocumento =" + persona.getNumDocumento() + ", persona=" + persona.getNombre() + " " + persona.getApellidos() + "]";
+	}
+
+	@Override
+	public int hashCode() {
+		return Objects.hash(alias);
+	}
+
+	@Override
+	public boolean equals(Object obj) {
+		
+		if (this == obj) {
+			return true;
+		}
+		if (!(obj instanceof Usuario)) {
+			return false;
+		}
+		Usuario other = (Usuario) obj;
+		return Objects.equals(alias, other.alias);
+		
+	}
+
 	public int getId() {
 		return id;
 	}
@@ -94,20 +123,20 @@ public class Usuario {
 		this.email = email;
 	}
 
-	public Date getFec_alta() {
-		return fec_alta;
+	public Date getFecAlta() {
+		return fecAlta;
 	}
 
-	public void setFec_alta(Date fec_alta) {
-		this.fec_alta = fec_alta;
+	public void setFecAlta(Date fecAlta) {
+		this.fecAlta = fecAlta;
 	}
 
-	public Date getFec_baja() {
-		return fec_baja;
+	public Date getFecBaja() {
+		return fecBaja;
 	}
 
-	public void setFec_baja(Date fec_baja) {
-		this.fec_baja = fec_baja;
+	public void setFecBaja(Date fecBaja) {
+		this.fecBaja = fecBaja;
 	}
 
 	public Integer getIntentos() {
@@ -118,20 +147,20 @@ public class Usuario {
 		this.intentos = intentos;
 	}
 
-	public Date getFec_modif() {
-		return fec_modif;
+	public Date getFecModif() {
+		return fecModif;
 	}
 
-	public void setFec_modif(Date fec_modif) {
-		this.fec_modif = fec_modif;
+	public void setFecModif(Date fecModif) {
+		this.fecModif = fecModif;
 	}
 
-	public Integer getCtl_usuario() {
-		return ctl_usuario;
+	public Integer getCtlUsuario() {
+		return ctlUsuario;
 	}
 
-	public void setCtl_usuario(Integer ctl_usuario) {
-		this.ctl_usuario = ctl_usuario;
+	public void setCtlUsuario(Integer ctlUsuario) {
+		this.ctlUsuario = ctlUsuario;
 	}
 
 	public String getPassword() {
@@ -150,13 +179,17 @@ public class Usuario {
 		this.persona = persona;
 	}
 
-	public Integer getCtl_estado() {
-		return ctl_estado;
+	public Integer getCtlEstado() {
+		return ctlEstado;
 	}
 
-	public void setCtl_estado(Integer ctl_estado) {
-		this.ctl_estado = ctl_estado;
+	public void setCtlEstado(Integer ctlEstado) {
+		this.ctlEstado = ctlEstado;
 	}
 
+	public static long getSerialversionuid() {
+		return serialVersionUID;
+	}
+	
 }
 

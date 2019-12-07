@@ -25,28 +25,28 @@ public class TestUsuario {
 		
 		//Inicializamos los datos del usuario
 		usuario.setAlias("PRUEBA4");
-		usuario.setCtl_usuario(1);
+		usuario.setCtlUsuario(1);
 		usuario.setEmail("prueba4@gmail.com");
 		usuario.setIntentos(0);
-		usuario.setCtl_estado(0);
+		usuario.setCtlEstado(0);
 		
 		//Creamos la persona
 		Persona persona = new Persona();
-		persona.setCtl_usuario(1);
-		persona.setCtl_estado(1);
-		persona.setId_tipo_documento(1);
+		persona.setCtlUsuario(1);
+		persona.setCtlEstado(1);
+		persona.setIdTipoDocumento(1);
 		persona.setNombre("Prueba");
 		persona.setApellidos("Prueba");
-		persona.setNum_documento("1014");
+		persona.setNumDocumento("1014");
 		
 		//Inicializamos los datos del domicilio
 		Domicilio domicilio = new Domicilio();
 		domicilio.setCalle("jj");
-		domicilio.setCod_postal("28943");
-		domicilio.setCtl_estado(1);
-		domicilio.setCtl_usuario(1);
-		domicilio.setId_pais(1);
-		domicilio.setId_tipo_domicilio(1);
+		domicilio.setCodPostal("28943");
+		domicilio.setCtlEstado(1);
+		domicilio.setCtlUsuario(1);
+		domicilio.setIdPais(1);
+		domicilio.setIdTipoDomicilio(1);
 		domicilio.setLocalidad("dd");
 		domicilio.setNumero(1);
 		domicilio.setPiso("1");
@@ -55,11 +55,11 @@ public class TestUsuario {
 		
 		domicilio = new Domicilio();
 		domicilio.setCalle("jj");
-		domicilio.setCod_postal("28942");
-		domicilio.setCtl_estado(1);
-		domicilio.setCtl_usuario(1);
-		domicilio.setId_pais(1);
-		domicilio.setId_tipo_domicilio(1);
+		domicilio.setCodPostal("28942");
+		domicilio.setCtlEstado(1);
+		domicilio.setCtlUsuario(1);
+		domicilio.setIdPais(1);
+		domicilio.setIdTipoDomicilio(1);
 		domicilio.setLocalidad("dd");
 		domicilio.setNumero(1);
 		domicilio.setPiso("1");
@@ -68,15 +68,15 @@ public class TestUsuario {
 		
 		//Inicializamos los telefonos
 		Telefono telefono = new Telefono();
-		telefono.setCtl_estado(1);
+		telefono.setCtlEstado(1);
 		telefono.setTelefono("916074799");
-		telefono.setCtl_usuario(1);
+		telefono.setCtlUsuario(1);
 		persona.addTelefono(telefono);
 		
 		telefono = new Telefono();
-		telefono.setCtl_estado(1);
+		telefono.setCtlEstado(1);
 		telefono.setTelefono("916074798");
-		telefono.setCtl_usuario(1);
+		telefono.setCtlUsuario(1);
 		persona.addTelefono(telefono);
 		
 		usuario.setPersona(persona);
@@ -137,7 +137,7 @@ public class TestUsuario {
 			usuario = usuarioDAO.selectById(session, usuario.getId());
 			System.out.println(usuario.getPersona().getNombre());
 		} catch (Exception ex){
-			//fail("Error al seleccionar");
+			fail("Error al seleccionar");
 		}
 		
 		session.getTransaction().commit();
@@ -185,7 +185,7 @@ public class TestUsuario {
 		EstadoDAO estadoDAO = new EstadoDAO();
 		
 		estado = estadoDAO.selectById(session, estado);
-		System.out.println(estado.getDesc_estado());
+		System.out.println(estado.getDescEstado());
 		
 		session.getTransaction().commit();
 		
@@ -201,7 +201,7 @@ public class TestUsuario {
 		PaisDAO paisDAO = new PaisDAO();
 		
 		pais = paisDAO.selectById(session, 1);
-		System.out.println(pais.getDesc_pais());
+		System.out.println(pais.getDescPais());
 		
 		session.getTransaction().commit();
 		
@@ -219,7 +219,7 @@ public class TestUsuario {
 		TipoDocumentoDAO tipo_documentoDAO = new TipoDocumentoDAO();
 		
 		tipo_documento = tipo_documentoDAO.selectById(session, tipo_documento);
-		System.out.println(tipo_documento.getDesc_tipo_documento());
+		System.out.println(tipo_documento.getDescTipoDocumento());
 		
 		session.getTransaction().commit();
 		
@@ -237,7 +237,7 @@ public class TestUsuario {
 		TipoDomicilioDAO tipoDomicilioDAO = new TipoDomicilioDAO();
 		
 		tipoDomicilio = tipoDomicilioDAO.selectById(session, tipoDomicilio);
-		System.out.println(tipoDomicilio.getDesc_tipo_domicilio());
+		System.out.println(tipoDomicilio.getDescTipoDomicilio());
 		
 		session.getTransaction().commit();
 

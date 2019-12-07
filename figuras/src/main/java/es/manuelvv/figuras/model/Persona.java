@@ -1,5 +1,6 @@
 package es.manuelvv.figuras.model;
 
+import java.io.Serializable;
 import java.util.*;
 
 import javax.persistence.*;
@@ -9,7 +10,10 @@ import es.manuelvv.figuras.model.Telefono;
 
 @Entity
 @Table(name="tr_personas")
-public class Persona {
+public class Persona
+implements Serializable{
+
+	private static final long serialVersionUID = 1L;
 	
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
@@ -23,25 +27,25 @@ public class Persona {
 	private String apellidos;
 	
 	@Column(name = "id_tipo_documento")
-	private int id_tipo_documento;
+	private int idTipoDocumento;
 	
 	@Column(name = "num_documento")
-	private String num_documento;
+	private String numDocumento;
 	
 	@Column(name = "fec_alta")
-	private Date fec_alta;
+	private Date fecAlta;
 	
 	@Column(name = "fec_modif")
-	private Date fec_modif;
+	private Date fecModif;
 	
 	@Column(name = "ctl_usuario")
-	private int ctl_usuario;
+	private int ctlUsuario;
 	
 	@Column(name = "fec_baja")
-	private Date fec_baja;
+	private Date fecBaja;
 	
 	@Column(name = "ctl_estado")
-	private int ctl_estado;
+	private int ctlEstado;
 	
 	@OneToMany(cascade = CascadeType.ALL,
 			   fetch = FetchType.LAZY)
@@ -58,24 +62,50 @@ public class Persona {
 	public Persona(int id,
 				   String nombre,
 				   String apellidos,
-				   Integer id_tipo_documento,
-				   String num_documento,
-				   Date fec_alta,
-				   Date fec_modif,
-				   Integer ctl_usuario,
-				   Date fec_baja,
-				   Integer ctl_estado){
+				   Integer idTipoDocumento,
+				   String numDocumento,
+				   Date fecAlta,
+				   Date fecModif,
+				   Integer ctlUsuario,
+				   Date fecBaja,
+				   Integer ctlEstado){
 		
 		setId(id);
 		setNombre(nombre);
 		setApellidos(apellidos);
-		setId_tipo_documento(id_tipo_documento);
-		setNum_documento(num_documento);
-		setFec_alta(fec_alta);
-		setFec_modif(fec_modif);
-		setCtl_usuario(ctl_usuario);
-		setFec_baja(fec_baja);
-		setCtl_estado(ctl_estado);
+		setIdTipoDocumento(idTipoDocumento);
+		setNumDocumento(numDocumento);
+		setFecAlta(fecAlta);
+		setFecModif(fecModif);
+		setCtlUsuario(ctlUsuario);
+		setFecBaja(fecBaja);
+		setCtlEstado(ctlEstado);
+		
+	}
+
+		
+	@Override
+	public String toString() {
+		return "Persona [num_documento=" + numDocumento + ", nombre=" + nombre + ", apellidos=" + apellidos + "]";
+	}
+
+	@Override
+	public int hashCode() {
+		return Objects.hash(apellidos, idTipoDocumento, nombre, numDocumento);
+	}
+
+	@Override
+	public boolean equals(Object obj) {
+		
+		if (this == obj) {
+			return true;
+		}
+		if (!(obj instanceof Persona)) {
+			return false;
+		}
+		Persona other = (Persona) obj;
+		return Objects.equals(apellidos, other.apellidos) && idTipoDocumento == other.idTipoDocumento
+				&& Objects.equals(nombre, other.nombre) && Objects.equals(numDocumento, other.numDocumento);
 		
 	}
 
@@ -113,60 +143,60 @@ public class Persona {
 		this.apellidos = apellidos;
 	}
 
-	public int getId_tipo_documento() {
-		return id_tipo_documento;
+	public int getIdTipoDocumento() {
+		return idTipoDocumento;
 	}
 
-	public void setId_tipo_documento(int id_tipo_documento) {
-		this.id_tipo_documento = id_tipo_documento;
+	public void setIdTipoDocumento(int idTipoDocumento) {
+		this.idTipoDocumento = idTipoDocumento;
 	}
 
-	public String getNum_documento() {
-		return num_documento;
+	public String getNumDocumento() {
+		return numDocumento;
 	}
 
-	public void setNum_documento(String num_documento) {
-		this.num_documento = num_documento;
+	public void setNumDocumento(String numDocumento) {
+		this.numDocumento = numDocumento;
 	}
 
-	public Date getFec_alta() {
-		return fec_alta;
+	public Date getFecAlta() {
+		return fecAlta;
 	}
 
-	public void setFec_alta(Date fec_alta) {
-		this.fec_alta = fec_alta;
+	public void setFecAlta(Date fecAlta) {
+		this.fecAlta = fecAlta;
 	}
 
-	public Date getFec_modif() {
-		return fec_modif;
+	public Date getFecModif() {
+		return fecModif;
 	}
 
-	public void setFec_modif(Date fec_modif) {
-		this.fec_modif = fec_modif;
+	public void setFecModif(Date fecModif) {
+		this.fecModif = fecModif;
 	}
 
-	public int getCtl_usuario() {
-		return ctl_usuario;
+	public int getCtlUsuario() {
+		return ctlUsuario;
 	}
 
-	public void setCtl_usuario(int ctl_usuario) {
-		this.ctl_usuario = ctl_usuario;
+	public void setCtlUsuario(int ctlUsuario) {
+		this.ctlUsuario = ctlUsuario;
 	}
 
-	public Date getFec_baja() {
-		return fec_baja;
+	public Date getFecBaja() {
+		return fecBaja;
 	}
 
-	public void setFec_baja(Date fec_baja) {
-		this.fec_baja = fec_baja;
+	public void setFecBaja(Date fecBaja) {
+		this.fecBaja = fecBaja;
 	}
 
-	public int getCtl_estado() {
-		return ctl_estado;
+	public int getCtlEstado() {
+		return ctlEstado;
 	}
 
-	public void setCtl_estado(int ctl_estado) {
-		this.ctl_estado = ctl_estado;
+	public void setCtlEstado(int ctlEstado) {
+		this.ctlEstado = ctlEstado;
 	}
 
 	public List<Domicilio> getDomicilios() {
@@ -183,6 +213,10 @@ public class Persona {
 
 	public void setTelefonos(List<Telefono> telefonos) {
 		this.telefonos = telefonos;
+	}
+	
+	public static long getSerialversionuid() {
+		return serialVersionUID;
 	}
 	
 }

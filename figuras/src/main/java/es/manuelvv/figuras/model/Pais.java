@@ -1,5 +1,6 @@
 package es.manuelvv.figuras.model;
 
+import java.io.Serializable;
 import java.util.Date;
 import javax.persistence.*;
 import org.hibernate.annotations.CacheConcurrencyStrategy;
@@ -7,47 +8,50 @@ import org.hibernate.annotations.CacheConcurrencyStrategy;
 @Entity
 @Table(name="tr_paises")
 @org.hibernate.annotations.Cache(usage=CacheConcurrencyStrategy.READ_WRITE)
-public class Pais {
+public class Pais 
+implements Serializable{
 
+	private static final long serialVersionUID = 1L;
+	
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	@Column(name = "id_paises")
 	private int id;
 	
 	@Column(name = "cod_pais")
-	private String cod_pais;
+	private String codPais;
 	
 	@Column(name = "desc_pais")
-	private String desc_pais;
+	private String descPais;
 	
 	@Column(name = "fec_alta")
-	private Date fec_alta;
+	private Date fecAlta;
 	
 	@Column(name = "fec_modif")
-	private Date fec_modif;
+	private Date fecModif;
 	
 	@Column(name = "ctl_usuario")
-	private int ctl_usuario;
+	private int ctlUsuario;
 	
 	@Column(name = "ctl_estado")
-	private int ctl_estado;
+	private int ctlEstado;
 	
 	public Pais() {}
 	
 	public Pais(int id,
-				String cod_pais,
-				String desc_pais,
-				Date fec_alta,
-				Date fec_modif,
-				int ctl_usuario,
-				int ctl_estado){
+				String codPais,
+				String descPais,
+				Date fecAlta,
+				Date fecModif,
+				int ctlUsuario,
+				int ctlEstado){
 		this.setId(id);
-		this.setCod_pais(cod_pais);
-		this.setDesc_pais(desc_pais);
-		this.setFec_alta(fec_alta);
-		this.setFec_modif(fec_modif);
-		this.setCtl_usuario(ctl_usuario);
-		this.setCtl_estado(ctl_estado);
+		this.setCodPais(codPais);
+		this.setDescPais(descPais);
+		this.setFecAlta(fecAlta);
+		this.setFecModif(fecModif);
+		this.setCtlUsuario(ctlUsuario);
+		this.setCtlEstado(ctlEstado);
 	}
 
 	public int getId() {
@@ -58,52 +62,56 @@ public class Pais {
 		this.id = id;
 	}
 
-	public String getCod_pais() {
-		return cod_pais;
+	public String getCodPais() {
+		return codPais;
 	}
 
-	public void setCod_pais(String cod_pais) {
-		this.cod_pais = cod_pais;
+	public void setCodPais(String codPais) {
+		this.codPais = codPais;
 	}
 
-	public String getDesc_pais() {
-		return desc_pais;
+	public String getDescPais() {
+		return descPais;
 	}
 
-	public void setDesc_pais(String desc_pais) {
-		this.desc_pais = desc_pais;
+	public void setDescPais(String descPais) {
+		this.descPais = descPais;
 	}
 
-	public Date getFec_alta() {
-		return fec_alta;
+	public Date getFecAlta() {
+		return fecAlta;
 	}
 
-	public void setFec_alta(Date fec_alta) {
-		this.fec_alta = fec_alta;
+	public void setFecAlta(Date fecAlta) {
+		this.fecAlta = fecAlta;
 	}
 
-	public Date getFec_modif() {
-		return fec_modif;
+	public Date getFecModif() {
+		return fecModif;
 	}
 
-	public void setFec_modif(Date fec_modif) {
-		this.fec_modif = fec_modif;
+	public void setFecModif(Date fecModif) {
+		this.fecModif = fecModif;
 	}
 
-	public int getCtl_usuario() {
-		return ctl_usuario;
+	public int getCtlUusuario() {
+		return ctlUsuario;
 	}
 
-	public void setCtl_usuario(int ctl_usuario) {
-		this.ctl_usuario = ctl_usuario;
+	public void setCtlUsuario(int ctlUsuario) {
+		this.ctlUsuario = ctlUsuario;
 	}
 
-	public int getCtl_estado() {
-		return ctl_estado;
+	public int getCtlEstado() {
+		return ctlEstado;
 	}
 
-	public void setCtl_estado(int ctl_estado) {
-		this.ctl_estado = ctl_estado;
+	public void setCtlEstado(int ctlEstado) {
+		this.ctlEstado = ctlEstado;
 	}
 		
+	public static long getSerialversionuid() {
+		return serialVersionUID;
+	}
+	
 }

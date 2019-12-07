@@ -24,32 +24,32 @@ implements Serializable{
 	private String idioma;
 	
 	@Column(name = "desc_estado")
-	private String desc_estado;
+	private String descEstado;
 	
 	@Column(name = "fec_alta")
-	private Date fec_alta;
+	private Date fecAlta;
 	
 	@Column(name = "fec_modif")
-	private Date fec_modif;
+	private Date fecModif;
 	
 	@Column(name = "ctl_usuario")
-	private int ctl_usuario;
+	private int ctlUsuario;
 	
 	public Estado() {}
 	
 	public Estado(int id,
-				  String desc_estado,
+				  String descEstado,
 				  String idioma,
-				  Date fec_alta,
-				  Date fec_modif,
-				  int ctl_usuario)	{
+				  Date fecAlta,
+				  Date fecModif,
+				  int ctlUsuario)	{
 		
 		this.setId(id);
-		this.setDesc_estado(desc_estado);
+		this.setDescEstado(descEstado);
 		this.setIdioma(idioma);
-		this.setFec_alta(fec_alta);
-		this.setFec_modif(fec_modif);
-		this.setCtl_usuario(ctl_usuario);
+		this.setFecAlta(fecAlta);
+		this.setFecModif(fecModif);
+		this.setCtlUsuario(ctlUsuario);
 		
 	}
 
@@ -61,12 +61,12 @@ implements Serializable{
 		this.id = id;
 	}
 
-	public String getDesc_estado() {
-		return desc_estado;
+	public String getDescEstado() {
+		return descEstado;
 	}
 
-	public void setDesc_estado(String desc_estado) {
-		this.desc_estado = desc_estado;
+	public void setDescEstado(String descEstado) {
+		this.descEstado = descEstado;
 	}
 
 	public String getIdioma() {
@@ -77,28 +77,32 @@ implements Serializable{
 		this.idioma = idioma;
 	}
 
-	public Date getFec_alta() {
-		return fec_alta;
+	public Date getFecAlta() {
+		return fecAlta;
 	}
 
-	public void setFec_alta(Date fec_alta) {
-		this.fec_alta = fec_alta;
+	public void setFecAlta(Date fecAlta) {
+		this.fecAlta = fecAlta;
 	}
 
-	public Date getFec_modif() {
-		return fec_modif;
+	public Date getFecModif() {
+		return fecModif;
 	}
 
-	public void setFec_modif(Date fec_modif) {
-		this.fec_modif = fec_modif;
+	public void setFecModif(Date fecModif) {
+		this.fecModif = fecModif;
 	}
 
-	public int getCtl_usuario() {
-		return ctl_usuario;
+	public int getCtlUsuario() {
+		return ctlUsuario;
 	}
 
-	public void setCtl_usuario(int ctl_usuario) {
-		this.ctl_usuario = ctl_usuario;
+	public void setCtlUsuario(int ctlUsuario) {
+		this.ctlUsuario = ctlUsuario;
 	}
 
+	public static long getSerialversionuid() {
+		return serialVersionUID;
+	}
+	
 }

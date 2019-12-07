@@ -1,25 +1,24 @@
 package es.manuelvv.figuras.model;
 
+import java.io.Serializable;
 import java.util.Date;
 
-import javax.persistence.Column;
-import javax.persistence.Entity;
-import javax.persistence.GeneratedValue;
-import javax.persistence.GenerationType;
-import javax.persistence.Id;
-import javax.persistence.Table;
+import javax.persistence.*;
 
 @Entity
 @Table(name="tr_domicilios")
-public class Domicilio {
+public class Domicilio 
+implements Serializable{
 
+	private static final long serialVersionUID = 1L;
+	
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	@Column(name = "id_domicilio")
 	private int id;
 	
 	@Column(name = "id_tipo_domicilio")
-	private int id_tipo_domicilio;
+	private int idTipoDomicilio;
 	
 	@Column(name = "calle")
 	private String calle;
@@ -37,57 +36,57 @@ public class Domicilio {
 	private String resto;
 	
 	@Column(name = "cod_postal")
-	private String cod_postal;
+	private String codPostal;
 	
 	@Column(name = "localidad")
 	private String localidad;
 	
 	@Column(name = "id_pais")
-	private int id_pais;
+	private int idPais;
 	
 	@Column(name = "fec_alta")
-	private Date fec_alta;
+	private Date fecAlta;
 	
 	@Column(name = "fec_modif")
-	private Date fec_modif;
+	private Date fecModif;
 	
 	@Column(name = "ctl_usuario")
-	private int ctl_usuario;
+	private int ctlUsuario;
 	
 	@Column(name = "ctl_estado")
-	private int ctl_estado;
+	private int ctlEstado;
 	
 	public Domicilio(){}
 	
 	public Domicilio(int id, 
-					 int id_tipo_domicilio, 
+					 int idTipoDomicilio, 
 					 String calle, 
 					 int numero, 
 					 String piso,
 					 String puerta, 
 					 String resto, 
-					 String cod_postal, 
+					 String codPostal, 
 					 String localidad, 
-					 int id_pais, 
-					 Date fec_alta,
-					 Date fec_modif, 
-					 int ctl_usuario, 
-					 int ctl_estado) {
+					 int idPais, 
+					 Date fecAlta,
+					 Date fecModif, 
+					 int ctlUsuario, 
+					 int ctlEstado) {
 
 		setId(id);
-		setId_tipo_domicilio(id_tipo_domicilio);
+		setIdTipoDomicilio(idTipoDomicilio);
 		setCalle(calle);
 		setNumero(numero);
 		setPiso(piso);
 		setPuerta(puerta);
 		setResto(resto);
-		setCod_postal(cod_postal);
+		setCodPostal(codPostal);
 		setLocalidad(localidad);
-		setId_pais(id_pais);
-		setFec_alta(fec_alta);
-		setFec_modif(fec_modif);
-		setCtl_usuario(ctl_usuario);
-		setCtl_estado(ctl_estado);
+		setIdPais(idPais);
+		setFecAlta(fecAlta);
+		setFecModif(fecModif);
+		setCtlUsuario(ctlUsuario);
+		setCtlEstado(ctlEstado);
 		
 	}
 
@@ -99,12 +98,12 @@ public class Domicilio {
 		this.id = id;
 	}
 	
-	public int getId_tipo_domicilio() {
-		return id_tipo_domicilio;
+	public int getIdTipoDomicilio() {
+		return idTipoDomicilio;
 	}
 	
-	public void setId_tipo_domicilio(int id_tipo_domicilio) {
-		this.id_tipo_domicilio = id_tipo_domicilio;
+	public void setIdTipoDomicilio(int idTipoDomicilio) {
+		this.idTipoDomicilio = idTipoDomicilio;
 	}
 	
 	public String getCalle() {
@@ -147,12 +146,12 @@ public class Domicilio {
 		this.resto = resto;
 	}
 	
-	public String getCod_postal() {
-		return cod_postal;
+	public String getCodPostal() {
+		return codPostal;
 	}
 	
-	public void setCod_postal(String cod_postal) {
-		this.cod_postal = cod_postal;
+	public void setCodPostal(String codPostal) {
+		this.codPostal = codPostal;
 	}
 	
 	public String getLocalidad() {
@@ -163,44 +162,48 @@ public class Domicilio {
 		this.localidad = localidad;
 	}
 	
-	public int getId_pais() {
-		return id_pais;
+	public int getIdPais() {
+		return idPais;
 	}
 	
-	public void setId_pais(int id_pais) {
-		this.id_pais = id_pais;
+	public void setIdPais(int idPais) {
+		this.idPais = idPais;
 	}
 	
-	public Date getFec_alta() {
-		return fec_alta;
+	public Date getFecAlta() {
+		return fecAlta;
 	}
 	
-	public void setFec_alta(Date fec_alta) {
-		this.fec_alta = fec_alta;
+	public void setFecAlta(Date fecAlta) {
+		this.fecAlta = fecAlta;
 	}
 	
-	public Date getFec_modif() {
-		return fec_modif;
+	public Date getFecModif() {
+		return fecModif;
 	}
 	
-	public void setFec_modif(Date fec_modif) {
-		this.fec_modif = fec_modif;
+	public void setFecModif(Date fecModif) {
+		this.fecModif = fecModif;
 	}
 	
-	public int getCtl_usuario() {
-		return ctl_usuario;
+	public int getCtlUsuario() {
+		return ctlUsuario;
 	}
 	
-	public void setCtl_usuario(int ctl_usuario) {
-		this.ctl_usuario = ctl_usuario;
+	public void setCtlUsuario(int ctlUsuario) {
+		this.ctlUsuario = ctlUsuario;
 	}
 	
-	public int getCtl_estado() {
-		return ctl_estado;
+	public int getCtlEstado() {
+		return ctlEstado;
 	}
 	
-	public void setCtl_estado(int ctl_estado) {
-		this.ctl_estado = ctl_estado;
+	public void setCtlEstado(int ctlEstado) {
+		this.ctlEstado = ctlEstado;
 	}
 
+	public static long getSerialversionuid() {
+		return serialVersionUID;
+	}
+	
 }
