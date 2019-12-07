@@ -17,7 +17,7 @@ import es.manuelvv.framework.utils.Constantes;
  */
 public class ValidacionesUtils {
 
-	/**
+	/** 
 	 * Metodo que realiza la validación de un correo electronico
 	 * @return - Indica si el email es correcto
 	 * @param email - Email a validar
