@@ -1,6 +1,3 @@
-/**
- * 
- */
 package es.manuelvv.framework;
 
 import static org.junit.Assert.*;
@@ -17,7 +14,7 @@ public class TestMail {
 	public void test() {
 		try{
 			
-			Mail email = new Mail("smtp.strato.com",25,"webmaster@manuelvv.es","Vaz3525air");
+			Mail email = new Mail("smtp.strato.com",25,"webmaster@manuelvv.es","b4woVgX5t&8N$8k");
 			email.setAsunto("Prueba");
 			email.setTo(new InternetAddress("manuelvv@gmail.com"));
 			email.setFrom(new InternetAddress("webmaster@manuelvv.es"));

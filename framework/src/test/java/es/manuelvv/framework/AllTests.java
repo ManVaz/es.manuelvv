@@ -6,7 +6,8 @@ import org.junit.runners.Suite.SuiteClasses;
 
 @RunWith(Suite.class)
 @SuiteClasses({TestEncriptacion.class, 
-			  TestMail.class})
+			  TestMail.class,
+			  ValidacionesUtil.class})
 
 public class AllTests {
 
