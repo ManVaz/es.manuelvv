@@ -5,8 +5,21 @@ import java.security.NoSuchAlgorithmException;
 
 import es.manuelvv.framework.utils.Constantes;
 
+/**
+ * Clase EncriptacionMD5
+ * 
+ * Clase con la utilizad de encriptar un texto
+ *
+ * @author Manuel Vázquez
+ * @version 1.0
+ */
 public class EncriptacionMD5 {
 
+	/**
+	 * Convirte el texto en hexadecimal
+	 * @param digest Texto a pasar a hexadecimal
+	 * @return Devuelve el texto pasada como parametro en hexadecimal
+	 */
     private static String toHexadecimal(byte[] digest){
     	String hash = "";
     	for(byte aux : digest) {
@@ -18,6 +31,11 @@ public class EncriptacionMD5 {
     	return hash;
     }
     
+	/**
+	 * Encripta un texto dado en MD5
+	 * @param palabra Texto a encriptar
+	 * @return Devuelve el texto encriptado en MD5
+	 */    
 	public static String encriptar(String palabra) 
 	throws NoSuchAlgorithmException {
 		
@@ -30,7 +48,5 @@ public class EncriptacionMD5 {
 		return toHexadecimal(digest);
 	
 	}
-	
-	
 
 }
