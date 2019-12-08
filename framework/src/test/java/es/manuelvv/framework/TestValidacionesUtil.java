@@ -8,25 +8,7 @@ import java.util.GregorianCalendar;
 import org.junit.Test;
 import es.manuelvv.framework.utils.ValidacionesUtils;
 
-public class ValidacionesUtil {
-
-	@Test
-	public void test() {
-		
-		//Comprobar Par
-		try{
-			testPar();
-		} catch (Exception ex){
-			fail("Error al verificar par");
-		}
-		
-		//Comprobar Bisiesto
-		try{
-			testBisiesto();
-		} catch (Exception ex){
-			fail("Error al verificar bisiesto");
-		}		
-	}
+public class TestValidacionesUtil {
 
 	@Test
 	public void testPar() {
