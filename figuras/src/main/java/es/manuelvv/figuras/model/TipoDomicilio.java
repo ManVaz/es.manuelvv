@@ -5,6 +5,14 @@ import java.util.Date;
 import javax.persistence.*;
 import org.hibernate.annotations.CacheConcurrencyStrategy;
 
+/**
+ * Clase TipoDomicilio
+ * 
+ * Clase para la gestión de un tipo de domicilio
+ *
+ * @author Manuel Vázquez
+ * @version 1.0
+ */
 @Entity
 @Table(name="tr_tipo_domicilio")
 @org.hibernate.annotations.Cache(usage=CacheConcurrencyStrategy.READ_WRITE)
@@ -37,8 +45,21 @@ implements Serializable{
 	@Column(name = "ctl_estado")
 	private int ctlEstado;
 	
+	/**
+	 * Constructor vacio
+	 */	
 	public TipoDomicilio() {}
 	
+	/**
+	 * Constructor con todos los atributos
+	 * @param id
+	 * @param idioma
+	 * @param descTipoDomicilio
+	 * @param fecAlta
+	 * @param fecModif
+	 * @param ctlUsuario
+	 * @param ctlEstado
+	 */
 	public TipoDomicilio(int id,
 						 String idioma,
 						 String descTipoDomicilio,
@@ -55,62 +76,107 @@ implements Serializable{
 		this.setCtlEstado(ctlEstado);
 	}
 
+	/**
+	 * @return id
+	 */
 	public int getId() {
-		return id;
+		return this.id;
 	}
 
+	/**
+	 * @param id
+	 */
 	public void setId(int id) {
 		this.id = id;
 	}
 
+	/**
+	 * @return idioma
+	 */
 	public String getIdioma() {
-		return idioma;
+		return this.idioma;
 	}
 
+	/**
+	 * @param idioma
+	 */
 	public void setIdioma(String idioma) {
 		this.idioma = idioma;
 	}
 
+	/**
+	 * @return descTipoDomicilio
+	 */
 	public String getDescTipoDomicilio() {
-		return descTipoDomicilio;
+		return this.descTipoDomicilio;
 	}
 
+	/**
+	 * @param descTipoDomicilio
+	 */
 	public void setDescTipoDomicilio(String descTipoDomicilio) {
 		this.descTipoDomicilio = descTipoDomicilio;
 	}
 
+	/**
+	 * @return fecAlta
+	 */
 	public Date getFecAlta() {
-		return fecAlta;
+		return this.fecAlta;
 	}
 
+	/**
+	 * @param fecAlta
+	 */
 	public void setFecAlta(Date fecAlta) {
 		this.fecAlta = fecAlta;
 	}
 
+	/**
+	 * @return fecModif
+	 */
 	public Date getFecModif() {
-		return fecModif;
+		return this.fecModif;
 	}
 
+	/**
+	 * @param fecModif
+	 */
 	public void setFecModif(Date fecModif) {
 		this.fecModif = fecModif;
 	}
 
+	/**
+	 * @return ctlUsuario
+	 */
 	public int getCtlUsuario() {
-		return ctlUsuario;
+		return this.ctlUsuario;
 	}
 
+	/**
+	 * @param ctlUsuario
+	 */
 	public void setCtlUsuario(int ctlUsuario) {
 		this.ctlUsuario = ctlUsuario;
 	}
 
+	/**
+	 * @return ctlEstado
+	 */ 
 	public int getCtlEstado() {
-		return ctlEstado;
+		return this.ctlEstado;
 	}
 
+	/**
+	 * @param ctlEstado
+	 */
 	public void setCtlEstado(int ctlEstado) {
 		this.ctlEstado = ctlEstado;
 	}
 
+	/**
+	 * @return serialVersionUID
+	 */
 	public static long getSerialversionuid() {
 		return serialVersionUID;
 	}

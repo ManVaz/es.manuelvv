@@ -19,8 +19,9 @@ public class HibernateSession {
 	private static final SessionFactory sessionFactory = buildSessionFactory();
 	private static Session session;
 	
-	/*
+	/**
 	 * Se genera un sessionFactory con la configuración establecida en el fichero de configuración de hibernate
+	 * @return Devuelve un SessionFactory
 	 */
 	public static SessionFactory buildSessionFactory(){
 		Configuration configuration = new Configuration();
@@ -33,8 +34,9 @@ public class HibernateSession {
 		
 	}
 
-	/*
+	/**
 	 * Recupera una sesión
+	 * @return Retorna una sesión
 	 */
 	public static Session getSession(){
 		if (session == null || !session.isOpen()){
@@ -44,8 +46,9 @@ public class HibernateSession {
 		return session;
 	}
 
-	/*
+	/**
 	 * Recupera una sessionFactory
+	 * @return Devuelve un SessionFactory
 	 */
 	public static SessionFactory getSessionfactory() {
 		return sessionFactory;

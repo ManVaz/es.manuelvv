@@ -5,6 +5,14 @@ import java.util.Date;
 import javax.persistence.*;
 import org.hibernate.annotations.CacheConcurrencyStrategy;
 
+/**
+ * Clase Pais
+ * 
+ * Clase para la gestión de un pais
+ *
+ * @author Manuel Vázquez
+ * @version 1.0
+ */
 @Entity
 @Table(name="tr_paises")
 @org.hibernate.annotations.Cache(usage=CacheConcurrencyStrategy.READ_WRITE)
@@ -36,8 +44,21 @@ implements Serializable{
 	@Column(name = "ctl_estado")
 	private int ctlEstado;
 	
+	/**
+	 * Constructor vacio
+	 */	
 	public Pais() {}
 	
+	/**
+	 * Contructor con todos los atributos
+	 * @param id
+	 * @param codPais
+	 * @param descPais
+	 * @param fecAlta
+	 * @param fecModif
+	 * @param ctlUsuario
+	 * @param ctlEstado
+	 */
 	public Pais(int id,
 				String codPais,
 				String descPais,
@@ -54,62 +75,107 @@ implements Serializable{
 		this.setCtlEstado(ctlEstado);
 	}
 
+	/**
+	 * @return id
+	 */
 	public int getId() {
-		return id;
+		return this.id;
 	}
 
+	/**
+	 * @param id
+	 */
 	public void setId(int id) {
 		this.id = id;
 	}
 
+	/**
+	 * @return codPais
+	 */
 	public String getCodPais() {
-		return codPais;
+		return this.codPais;
 	}
 
+	/**
+	 * @param codPais
+	 */
 	public void setCodPais(String codPais) {
 		this.codPais = codPais;
 	}
 
+	/**
+	 * @return descPais
+	 */
 	public String getDescPais() {
-		return descPais;
+		return this.descPais;
 	}
 
+	/**
+	 * @param descPais
+	 */
 	public void setDescPais(String descPais) {
 		this.descPais = descPais;
 	}
 
+	/**
+	 * @return fecAlta
+	 */
 	public Date getFecAlta() {
-		return fecAlta;
+		return this.fecAlta;
 	}
 
+	/**
+	 * @param fecAlta
+	 */
 	public void setFecAlta(Date fecAlta) {
 		this.fecAlta = fecAlta;
 	}
 
+	/**
+	 * @return fecModif
+	 */
 	public Date getFecModif() {
-		return fecModif;
+		return this.fecModif;
 	}
 
+	/**
+	 * @param fecModif
+	 */
 	public void setFecModif(Date fecModif) {
 		this.fecModif = fecModif;
 	}
 
+	/**
+	 * @return ctlUsuario
+	 */
 	public int getCtlUusuario() {
-		return ctlUsuario;
+		return this.ctlUsuario;
 	}
 
+	/**
+	 * @param ctlUsuario
+	 */
 	public void setCtlUsuario(int ctlUsuario) {
 		this.ctlUsuario = ctlUsuario;
 	}
 
+	/**
+	 * @return ctlEstado
+	 */
 	public int getCtlEstado() {
-		return ctlEstado;
+		return this.ctlEstado;
 	}
 
+	/**
+	 * @param ctlEstado
+	 */
 	public void setCtlEstado(int ctlEstado) {
 		this.ctlEstado = ctlEstado;
 	}
 		
+	/**
+	 * @return serialVersionUID
+	 */
 	public static long getSerialversionuid() {
 		return serialVersionUID;
 	}

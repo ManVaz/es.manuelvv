@@ -5,6 +5,14 @@ import java.util.Date;
 
 import javax.persistence.*;
 
+/**
+ * Clase Domicilio
+ * 
+ * Clase para la gestión de un domicilio
+ *
+ * @author Manuel Vázquez
+ * @version 1.0
+ */
 @Entity
 @Table(name="tr_domicilios")
 public class Domicilio 
@@ -56,8 +64,29 @@ implements Serializable{
 	@Column(name = "ctl_estado")
 	private int ctlEstado;
 	
+	/**
+	 * Constructor vacio
+	 */		
 	public Domicilio(){}
 	
+
+	/**
+	 * Constructor con todos los parametros
+	 * @param id
+	 * @param idTipoDomicilio
+	 * @param calle
+	 * @param numero
+	 * @param piso
+	 * @param puerta
+	 * @param resto
+	 * @param codPostal
+	 * @param localidad
+	 * @param idPais
+	 * @param fecAlta
+	 * @param fecModif
+	 * @param ctlUsuario
+	 * @param ctlEstado
+	 */
 	public Domicilio(int id, 
 					 int idTipoDomicilio, 
 					 String calle, 
@@ -90,118 +119,205 @@ implements Serializable{
 		
 	}
 
+	/**
+	 * @return id
+	 */
 	public int getId() {
-		return id;
+		return this.id;
 	}
 	
+	/**
+	 * @param id
+	 */
 	public void setId(int id) {
 		this.id = id;
 	}
 	
+	/**
+	 * @return idTipoDomicilio
+	 */	
 	public int getIdTipoDomicilio() {
-		return idTipoDomicilio;
+		return this.idTipoDomicilio;
 	}
 	
+	/**
+	 * @param idTipoDomicilio
+	 */
 	public void setIdTipoDomicilio(int idTipoDomicilio) {
 		this.idTipoDomicilio = idTipoDomicilio;
 	}
 	
+	/**
+	 * @return calle
+	 */	
 	public String getCalle() {
-		return calle;
+		return this.calle;
 	}
 	
+	/**
+	 * @param calle
+	 */
 	public void setCalle(String calle) {
 		this.calle = calle;
 	}
 	
+	/**
+	 * @return numero
+	 */	
 	public int getNumero() {
-		return numero;
+		return this.numero;
 	}
 	
+	/**
+	 * @param numero
+	 */
 	public void setNumero(int numero) {
 		this.numero = numero;
 	}
 	
+	/**
+	 * @return piso
+	 */	
 	public String getPiso() {
-		return piso;
+		return this.piso;
 	}
 	
+	/**
+	 * @param piso
+	 */
 	public void setPiso(String piso) {
 		this.piso = piso;
 	}
 	
+	/**
+	 * @return puerta
+	 */	
 	public String getPuerta() {
-		return puerta;
+		return this.puerta;
 	}
 	
+	/**
+	 * @param puerta
+	 */
 	public void setPuerta(String puerta) {
 		this.puerta = puerta;
 	}
 	
+	/**
+	 * @return resto
+	 */	
 	public String getResto() {
-		return resto;
+		return this.resto;
 	}
 	
+	/**
+	 * @param resto
+	 */
 	public void setResto(String resto) {
 		this.resto = resto;
 	}
 	
+	/**
+	 * @return codPostal
+	 */	
 	public String getCodPostal() {
-		return codPostal;
+		return this.codPostal;
 	}
 	
+	/**
+	 * @param codPostal
+	 */
 	public void setCodPostal(String codPostal) {
 		this.codPostal = codPostal;
 	}
 	
+	/**
+	 * @return localidad
+	 */	
 	public String getLocalidad() {
-		return localidad;
+		return this.localidad;
 	}
 	
+	/**
+	 * @param localidad
+	 */
 	public void setLocalidad(String localidad) {
 		this.localidad = localidad;
 	}
 	
+	/**
+	 * @return idPais
+	 */	
 	public int getIdPais() {
-		return idPais;
+		return this.idPais;
 	}
 	
+	/**
+	 * @param idPais
+	 */
 	public void setIdPais(int idPais) {
 		this.idPais = idPais;
 	}
 	
+	/**
+	 * @return fecAlta
+	 */	
 	public Date getFecAlta() {
-		return fecAlta;
+		return this.fecAlta;
 	}
 	
+	/**
+	 * @param fecAlta
+	 */
 	public void setFecAlta(Date fecAlta) {
 		this.fecAlta = fecAlta;
 	}
 	
+	/**
+	 * @return fecModif
+	 */	
 	public Date getFecModif() {
-		return fecModif;
+		return this.fecModif;
 	}
 	
+	/**
+	 * @param fecModif
+	 */
 	public void setFecModif(Date fecModif) {
 		this.fecModif = fecModif;
 	}
 	
+	/**
+	 * @return ctlUsuario
+	 */	
 	public int getCtlUsuario() {
-		return ctlUsuario;
+		return this.ctlUsuario;
 	}
 	
+	/**
+	 * @param ctlUsuario
+	 */
 	public void setCtlUsuario(int ctlUsuario) {
 		this.ctlUsuario = ctlUsuario;
 	}
 	
+	/**
+	 * @return ctlEstado
+	 */	
 	public int getCtlEstado() {
-		return ctlEstado;
+		return this.ctlEstado;
 	}
 	
+	/**
+	 * @param ctlEstado
+	 */
 	public void setCtlEstado(int ctlEstado) {
 		this.ctlEstado = ctlEstado;
 	}
 
+	/**
+	 * @return serialVersionUID
+	 */
 	public static long getSerialversionuid() {
 		return serialVersionUID;
 	}

@@ -8,6 +8,18 @@ import javax.persistence.*;
 import es.manuelvv.figuras.model.Domicilio;
 import es.manuelvv.figuras.model.Telefono;
 
+/**
+ * Clase Persona
+ * 
+ * Clase para la gestión de un persona
+ *
+ * @author Manuel Vázquez
+ * @version 1.0
+ */
+/**
+ * @author manue
+ *
+ */
 @Entity
 @Table(name="tr_personas")
 public class Persona
@@ -57,8 +69,24 @@ implements Serializable{
 	@JoinColumn(name="id_persona", nullable=false)
 	private List<Telefono> telefonos = new ArrayList<Telefono>();
 	
+	/**
+	 * Constructor vacio
+	 */	
 	public Persona(){}
 	
+	/**
+	 * Constructor con todos los atributos
+	 * @param id
+	 * @param nombre
+	 * @param apellidos
+	 * @param idTipoDocumento
+	 * @param numDocumento
+	 * @param fecAlta
+	 * @param fecModif
+	 * @param ctlUsuario
+	 * @param fecBaja
+	 * @param ctlEstado
+	 */
 	public Persona(int id,
 				   String nombre,
 				   String apellidos,
@@ -84,16 +112,30 @@ implements Serializable{
 	}
 
 		
+	/**
+	 * Metodo que devuelve el documento y nombre de la persona
+	 * @return documento y nombre de la persona
+	 */
 	@Override
 	public String toString() {
-		return "Persona [num_documento=" + numDocumento + ", nombre=" + nombre + ", apellidos=" + apellidos + "]";
+		return "Persona [num_documento=" + this.numDocumento + ", nombre=" + this.nombre + ", apellidos=" + this.apellidos + "]";
 	}
 
+	
+	/**
+	 * Metodo para generar un hash code.
+	 * @return int con la hash calculada
+	 */
 	@Override
 	public int hashCode() {
-		return Objects.hash(apellidos, idTipoDocumento, nombre, numDocumento);
+		return Objects.hash(this.apellidos, this.idTipoDocumento, this.nombre, this.numDocumento);
 	}
 
+	
+	/**
+	 * Metodo para comparar 2 objetos de tipo persona
+	 * @return True/false según sea o no iguales los objetos
+	 */
 	@Override
 	public boolean equals(Object obj) {
 		
@@ -104,117 +146,199 @@ implements Serializable{
 			return false;
 		}
 		Persona other = (Persona) obj;
-		return Objects.equals(apellidos, other.apellidos) && idTipoDocumento == other.idTipoDocumento
-				&& Objects.equals(nombre, other.nombre) && Objects.equals(numDocumento, other.numDocumento);
+		return Objects.equals(this.apellidos, other.apellidos) && this.idTipoDocumento == other.idTipoDocumento
+				&& Objects.equals(this.nombre, other.nombre) && Objects.equals(this.numDocumento, other.numDocumento);
 		
 	}
 
+	
+	/**
+	 * @param domicilio
+	 */
 	public void addDomicilio(Domicilio domicilio){
 		
 		domicilios.add(domicilio);
 	}
 	
+	/**
+	 * @param telefono
+	 */
 	public void addTelefono(Telefono telefono){
 		
 		telefonos.add(telefono);
 	}
 	
+	/**
+	 * @return id
+	 */
 	public int getId() {
-		return id;
+		return this.id;
 	}
 
+	/**
+	 * @param id
+	 */
 	public void setId(int id) {
 		this.id = id;
 	}
 
+	/**
+	 * @return nombre
+	 */
 	public String getNombre() {
-		return nombre;
+		return this.nombre;
 	}
 
+	/**
+	 * @param nombre
+	 */
 	public void setNombre(String nombre) {
 		this.nombre = nombre;
 	}
 
+	/**
+	 * @return apellidos
+	 */
 	public String getApellidos() {
-		return apellidos;
+		return this.apellidos;
 	}
 
+	/**
+	 * @param apellidos
+	 */
 	public void setApellidos(String apellidos) {
 		this.apellidos = apellidos;
 	}
 
+	/**
+	 * @return idTipoDocumento
+	 */
 	public int getIdTipoDocumento() {
-		return idTipoDocumento;
+		return this.idTipoDocumento;
 	}
 
+	/**
+	 * @param idTipoDocumento
+	 */
 	public void setIdTipoDocumento(int idTipoDocumento) {
 		this.idTipoDocumento = idTipoDocumento;
 	}
 
+	/**
+	 * @return numDocumento
+	 */
 	public String getNumDocumento() {
-		return numDocumento;
+		return this.numDocumento;
 	}
 
+	/**
+	 * @param numDocumento
+	 */
 	public void setNumDocumento(String numDocumento) {
 		this.numDocumento = numDocumento;
 	}
 
+	/**
+	 * @return fecAlta
+	 */
 	public Date getFecAlta() {
-		return fecAlta;
+		return this.fecAlta;
 	}
 
+	/**
+	 * @param fecAlta
+	 */
 	public void setFecAlta(Date fecAlta) {
 		this.fecAlta = fecAlta;
 	}
 
+	/**
+	 * @return fecModif
+	 */
 	public Date getFecModif() {
-		return fecModif;
+		return this.fecModif;
 	}
 
+	/**
+	 * @param fecModif
+	 */
 	public void setFecModif(Date fecModif) {
 		this.fecModif = fecModif;
 	}
 
+	/**
+	 * @return ctlUsuario
+	 */
 	public int getCtlUsuario() {
-		return ctlUsuario;
+		return this.ctlUsuario;
 	}
 
+	/**
+	 * @param ctlUsuario
+	 */
 	public void setCtlUsuario(int ctlUsuario) {
 		this.ctlUsuario = ctlUsuario;
 	}
 
+	/**
+	 * @return fecBaja
+	 */
 	public Date getFecBaja() {
-		return fecBaja;
+		return this.fecBaja;
 	}
 
+	/**
+	 * @param fecBaja
+	 */
 	public void setFecBaja(Date fecBaja) {
 		this.fecBaja = fecBaja;
 	}
 
+	/**
+	 * @return ctlEstado
+	 */
 	public int getCtlEstado() {
-		return ctlEstado;
+		return this.ctlEstado;
 	}
 
+	/**
+	 * @param ctlEstado
+	 */
 	public void setCtlEstado(int ctlEstado) {
 		this.ctlEstado = ctlEstado;
 	}
 
+	/**
+	 * @return domicilios
+	 */
 	public List<Domicilio> getDomicilios() {
-		return domicilios;
+		return this.domicilios;
 	}
 
+	/**
+	 * @param domicilios
+	 */
 	public void setDomicilios(List<Domicilio> domicilios) {
 		this.domicilios = domicilios;
 	}
 
+	/**
+	 * @return telefonos
+	 */
 	public List<Telefono> getTelefonos() {
-		return telefonos;
+		return this.telefonos;
 	}
 
+	/**
+	 * @param telefonos
+	 */
 	public void setTelefonos(List<Telefono> telefonos) {
 		this.telefonos = telefonos;
 	}
 	
+	/**
+	 * @return serialVersionUID
+	 */
 	public static long getSerialversionuid() {
 		return serialVersionUID;
 	}

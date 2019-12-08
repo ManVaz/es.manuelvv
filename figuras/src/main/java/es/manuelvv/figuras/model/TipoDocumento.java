@@ -5,6 +5,14 @@ import java.util.Date;
 import javax.persistence.*;
 import org.hibernate.annotations.CacheConcurrencyStrategy;
 
+/**
+ * Clase TipoDocumento
+ * 
+ * Clase para la gestión de un tipo de documento
+ *
+ * @author Manuel Vázquez
+ * @version 1.0
+ */
 @Entity
 @Table(name="tr_tipo_documento")
 @org.hibernate.annotations.Cache(usage=CacheConcurrencyStrategy.READ_WRITE)
@@ -34,8 +42,19 @@ implements Serializable{
 	@Column(name = "ctlUsuario")
 	private int ctlUsuario;
 	
+	/**
+	 * Constructor vacio
+	 */	
 	public TipoDocumento() {}
 	
+	/**
+	 * Constructor con todos los parametros
+	 * @param id
+	 * @param descTipoDocumento
+	 * @param fecAlta
+	 * @param fecModif
+	 * @param ctlUsuario
+	 */
 	public TipoDocumento(int id,
 						  String descTipoDocumento,
 						  Date fecAlta,
@@ -48,54 +67,93 @@ implements Serializable{
 		this.setCtlUsuario(ctlUsuario);
 	}
 
+	/**
+	 * @return id
+	 */
 	public int getId() {
-		return id;
+		return this.id;
 	}
 
+	/**
+	 * @param id
+	 */
 	public void setId(int id) {
 		this.id = id;
 	}
 
+	/**
+	 * @return idioma
+	 */
 	public String getIdioma() {
-		return idioma;
+		return this.idioma;
 	}
 
+	/**
+	 * @param idioma
+	 */
 	public void setIdioma(String idioma) {
 		this.idioma = idioma;
 	}
 
+	/**
+	 * @return descTipoDocumento
+	 */
 	public String getDescTipoDocumento() {
-		return descTipoDocumento;
+		return this.descTipoDocumento;
 	}
 
+	/**
+	 * @param descTipoDocumento
+	 */
 	public void setDescTipoDocumento(String descTipoDocumento) {
 		this.descTipoDocumento = descTipoDocumento;
 	}
 
+	/**
+	 * @return fecAlta
+	 */
 	public Date getFecAlta() {
-		return fecAlta;
+		return this.fecAlta;
 	}
 
+	/**
+	 * @param fecAlta
+	 */
 	public void setFecAlta(Date fecAlta) {
 		this.fecAlta = fecAlta;
 	}
 
+	/**
+	 * @return fecModif
+	 */
 	public Date getFecModif() {
-		return fecModif;
+		return this.fecModif;
 	}
 
+	/**
+	 * @param fecModif
+	 */
 	public void setFecModif(Date fecModif) {
 		this.fecModif = fecModif;
 	}
 
+	/**
+	 * @return ctlUsuario
+	 */
 	public int getCtlUsuario() {
-		return ctlUsuario;
+		return this.ctlUsuario;
 	}
 
+	/**
+	 * @param ctlUsuario
+	 */
 	public void setCtlUsuario(int ctlUsuario) {
 		this.ctlUsuario = ctlUsuario;
 	}
 
+	/**
+	 * @return serialVersionUID
+	 */
 	public static long getSerialversionuid() {
 		return serialVersionUID;
 	}

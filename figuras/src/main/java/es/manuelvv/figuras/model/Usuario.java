@@ -6,6 +6,22 @@ import java.util.Objects;
 
 import javax.persistence.*;
 
+/**
+ * Clase Usuario
+ * 
+ * Clase para la gestión de un usuario
+ *
+ * @author Manuel Vázquez
+ * @version 1.0
+ */
+/**
+ * @author manue
+ *
+ */
+/**
+ * @author manue
+ *
+ */
 @Entity
 @Table(name="tr_usuarios")
 public class Usuario 
@@ -49,8 +65,25 @@ implements Serializable{
 	@JoinColumn(name="id_persona")
 	private Persona persona;
 	
+	/**
+	 * Constructor vacio
+	 */	
 	public Usuario() {}
 
+	
+	/**
+	 * Constructor sin atributos
+	 * @param id
+	 * @param alias
+	 * @param email
+	 * @param fecAlta
+	 * @param fecBaja
+	 * @param intentos
+	 * @param fecModif
+	 * @param ctlUsuario
+	 * @param ctlEstado
+	 * @param persona
+	 */
 	public Usuario(int id,
 				   String alias,
 				   String email,
@@ -75,16 +108,29 @@ implements Serializable{
 		
 	}
 		
+	
+	/**
+	 * Metodo que devuelve el alias, el documento y nombre de la persona
+	 * @return alias, documento y nombre de la persona
+	 */
 	@Override
 	public String toString() {
-		return "Usuario [alias=" + alias + ", numDocumento =" + persona.getNumDocumento() + ", persona=" + persona.getNombre() + " " + persona.getApellidos() + "]";
+		return "Usuario [alias=" + alias + ", numDocumento =" + this.persona.getNumDocumento() + ", this.persona=" + persona.getNombre() + " " + this.persona.getApellidos() + "]";
 	}
 
+	/**
+	 * Metodo para generar un hash code.
+	 * @return int con la hash calculada
+	 */
 	@Override
 	public int hashCode() {
 		return Objects.hash(alias);
 	}
 
+	/**
+	 * Metodo para comparar 2 objetos de tipo usuario
+	 * @return True/false según sea o no iguales los objetos
+	 */
 	@Override
 	public boolean equals(Object obj) {
 		
@@ -99,94 +145,163 @@ implements Serializable{
 		
 	}
 
+	/**
+	 * @return id
+	 */
 	public int getId() {
-		return id;
+		return this.id;
 	}
 
+	/**
+	 * @param id
+	 */
 	public void setId(int id) {
 		this.id = id;
 	}
 
+	/**
+	 * @return alias
+	 */
 	public String getAlias() {
-		return alias;
+		return this.alias;
 	}
 
+	/**
+	 * @param alias
+	 */
 	public void setAlias(String alias) {
 		this.alias = alias;
 	}
 
+	/**
+	 * @return email
+	 */
 	public String getEmail() {
-		return email;
+		return this.email;
 	}
 
+	/**
+	 * @param email
+	 */
 	public void setEmail(String email) {
 		this.email = email;
 	}
 
+	/**
+	 * @return fecAlta
+	 */
 	public Date getFecAlta() {
-		return fecAlta;
+		return this.fecAlta;
 	}
 
+	/**
+	 * @param fecAlta
+	 */
 	public void setFecAlta(Date fecAlta) {
 		this.fecAlta = fecAlta;
 	}
 
+	/**
+	 * @return fecBaja
+	 */
 	public Date getFecBaja() {
-		return fecBaja;
+		return this.fecBaja;
 	}
 
+	/**
+	 * @param fecBaja
+	 */
 	public void setFecBaja(Date fecBaja) {
 		this.fecBaja = fecBaja;
 	}
 
+	/**
+	 * @return intentos
+	 */
 	public Integer getIntentos() {
-		return intentos;
+		return this.intentos;
 	}
 
+	/**
+	 * @param intentos
+	 */
 	public void setIntentos(Integer intentos) {
 		this.intentos = intentos;
 	}
 
+	/**
+	 * @return fecModif
+	 */
 	public Date getFecModif() {
-		return fecModif;
+		return this.fecModif;
 	}
 
+	/**
+	 * @param fecModif
+	 */
 	public void setFecModif(Date fecModif) {
 		this.fecModif = fecModif;
 	}
 
+	/**
+	 * @return ctlUsuario
+	 */
 	public Integer getCtlUsuario() {
-		return ctlUsuario;
+		return this.ctlUsuario;
 	}
 
+	/**
+	 * @param ctlUsuario
+	 */
 	public void setCtlUsuario(Integer ctlUsuario) {
 		this.ctlUsuario = ctlUsuario;
 	}
 
+	/**
+	 * @return password
+	 */
 	public String getPassword() {
-		return password;
+		return this.password;
 	}
 
+	/**
+	 * @param password
+	 */
 	public void setPassword(String password) {
 		this.password = password;
 	}
 
+	/**
+	 * @return persona
+	 */
 	public Persona getPersona() {
-		return persona;
+		return this.persona;
 	}
 
+	/**
+	 * @param persona
+	 */
 	public void setPersona(Persona persona) {
 		this.persona = persona;
 	}
 
+	/**
+	 * @return ctlEstado
+	 */
 	public Integer getCtlEstado() {
-		return ctlEstado;
+		return this.ctlEstado;
 	}
 
+	/**
+	 * @param ctlEstado
+	 */
 	public void setCtlEstado(Integer ctlEstado) {
 		this.ctlEstado = ctlEstado;
 	}
 
+	/**
+	 * @return serialVersionUID
+	 */
 	public static long getSerialversionuid() {
 		return serialVersionUID;
 	}

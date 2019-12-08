@@ -36,7 +36,7 @@ public enum Dias {
 	 * @return - Día de la semana
 	 */
 	public int getNum() {
-		return num;
+		return this.num;
 	}
 
 	/**
@@ -44,7 +44,7 @@ public enum Dias {
 	 * @return - Descripción del día
 	 */	
 	public String getDescripcion() {
-		return descripcion;
+		return this.descripcion;
 	}
 	
 }

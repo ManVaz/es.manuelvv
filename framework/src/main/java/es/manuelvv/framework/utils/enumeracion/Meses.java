@@ -44,7 +44,7 @@ public enum Meses {
 	 * @return - Número del mes
 	 */
 	public int getNum() {
-		return num;
+		return this.num;
 	}
 
 	/**
@@ -52,7 +52,7 @@ public enum Meses {
 	 * @return - Descripción del mes
 	 */
 	public String getDescripcion() {
-		return descripcion;
+		return this.descripcion;
 	}
 
 	/**
@@ -60,7 +60,7 @@ public enum Meses {
 	 * @return - Número de dias del mes
 	 */
 	public int getDias() {
-		return dias;
+		return this.dias;
 	}
 
 }
