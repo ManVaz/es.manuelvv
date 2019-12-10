@@ -8,7 +8,8 @@ import org.junit.runners.Suite.SuiteClasses;
 @SuiteClasses({TestEncriptacion.class, 
 			  TestMail.class,
 			  TestValidacionesUtil.class,
-			  TestFicheros.class})
+			  TestFicheros.class,
+			  TestBbdd.class})
 
 public class AllTests {
 
