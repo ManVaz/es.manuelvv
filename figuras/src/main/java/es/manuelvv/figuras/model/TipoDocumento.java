@@ -33,13 +33,13 @@ implements Serializable{
 	@Column(name = "desc_tipo_documento")
 	private String descTipoDocumento;
 	
-	@Column(name = "fecAlta")
+	@Column(name = "fec_Alta")
 	private Date fecAlta;
 	
-	@Column(name = "fecModif")
+	@Column(name = "fec_Modif")
 	private Date fecModif;
 	
-	@Column(name = "ctlUsuario")
+	@Column(name = "ctl_Usuario")
 	private int ctlUsuario;
 	
 	/**

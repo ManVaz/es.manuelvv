@@ -85,6 +85,7 @@ public class TestUsuario {
 		try{
 			usuario.setPassword(EncriptacionMD5.encriptar("Vaz3525air"));
 		} catch (Exception ex){
+			session.getTransaction().rollback();
 			fail("Error al encriptar passoword");
 		}
 				
@@ -92,6 +93,7 @@ public class TestUsuario {
 		try{
 			usuarioDAO.insert(session, usuario);
 		} catch (Exception ex){
+			session.getTransaction().rollback();
 			fail("Error al insertar");
 		}
 		
@@ -100,6 +102,7 @@ public class TestUsuario {
 			usuario.setEmail("prueba3@gmail.com");
 			usuarioDAO.update(session, usuario);
 		} catch (Exception ex){
+			session.getTransaction().rollback();
 			fail("Error al actualiza");
 		}
 		
@@ -107,6 +110,7 @@ public class TestUsuario {
 		try{
 			usuario = usuarioDAO.selectById(session, usuario.getId());
 		} catch (Exception ex){
+			session.getTransaction().rollback();
 			fail("Error al seleccionar");
 		}
 		
@@ -114,6 +118,7 @@ public class TestUsuario {
 		try{
 			usuarioDAO.delete(session, usuario);
 		} catch (Exception ex){
+			session.getTransaction().rollback();
 			fail("Error al borrar");
 		}
 		
@@ -137,6 +142,7 @@ public class TestUsuario {
 			usuario = usuarioDAO.selectById(session, usuario.getId());
 			System.out.println(usuario.getPersona().getNombre());
 		} catch (Exception ex){
+			session.getTransaction().rollback();
 			fail("Error al seleccionar");
 		}
 		
@@ -144,6 +150,80 @@ public class TestUsuario {
 
 	}
 
+	@Test
+	public void testExistUsuario1() {
+		
+		Session session = HibernateSession.getSession();
+		session.beginTransaction();
+		
+		boolean resultado = false;
+		UsuarioDAO usuarioDAO = new UsuarioDAO();
+				
+		//Select
+		try{
+			resultado = usuarioDAO.existUsuario(session, "ADMIN");
+			if (!resultado) {
+				session.getTransaction().rollback();
+				fail("Error al seleccionar");
+			}			
+			System.out.println(resultado);
+		} catch (Exception ex){
+			session.getTransaction().rollback();
+			fail("Error al seleccionar");
+		}
+		
+		session.getTransaction().commit();
+
+	}
+	
+	@Test
+	public void testExistUsuario2() {
+		
+		Session session = HibernateSession.getSession();
+		session.beginTransaction();
+		
+		boolean resultado = false;
+		UsuarioDAO usuarioDAO = new UsuarioDAO();
+				
+		//Select
+		try{
+			resultado = usuarioDAO.existUsuario(session, "ADMIN", EncriptacionMD5.encriptar("Vaz3525air"));
+			if (!resultado) {
+				session.getTransaction().rollback();
+				fail("Error al seleccionar");
+			}
+			System.out.println(resultado);
+		} catch (Exception ex){
+			session.getTransaction().rollback();
+			fail("Error al seleccionar");
+		}
+		
+		session.getTransaction().commit();
+
+	}
+
+	@Test
+	public void testUsuarioPass() {
+		
+		Session session = HibernateSession.getSession();
+		session.beginTransaction();
+		
+		Usuario usuario = new Usuario();
+		UsuarioDAO usuarioDAO = new UsuarioDAO();
+				
+		//Select
+		try{
+			usuario = usuarioDAO.selectByUsuarioPass(session, "ADMIN", EncriptacionMD5.encriptar("Vaz3525air"));
+			System.out.println(usuario.getAlias());
+		} catch (Exception ex){
+			session.getTransaction().rollback();
+			fail("Error al seleccionar");
+		}
+		
+		session.getTransaction().commit();
+
+	}
+	
 	@Test
 	public void testSelectPersona() {
 		
@@ -166,6 +246,7 @@ public class TestUsuario {
 		        System.out.println(f.getTelefono());
 		    }
 		} catch (Exception ex){
+			session.getTransaction().rollback();
 			fail("Error al seleccionar");
 		}
 		

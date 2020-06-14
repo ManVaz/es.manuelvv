@@ -62,12 +62,12 @@ implements Serializable{
 	@OneToMany(cascade = CascadeType.ALL,
 			   fetch = FetchType.LAZY)
 	@JoinColumn(name="id_persona", nullable=false)
-	private List<Domicilio> domicilios = new ArrayList<Domicilio>();
+	private Set<Domicilio> domicilios = new HashSet<Domicilio>();
 	
 	@OneToMany(cascade = CascadeType.ALL,
 			   fetch = FetchType.LAZY)
 	@JoinColumn(name="id_persona", nullable=false)
-	private List<Telefono> telefonos = new ArrayList<Telefono>();
+	private Set<Telefono> telefonos = new HashSet<Telefono>();
 	
 	/**
 	 * Constructor vacio
@@ -311,28 +311,28 @@ implements Serializable{
 	/**
 	 * @return domicilios
 	 */
-	public List<Domicilio> getDomicilios() {
+	public Set<Domicilio> getDomicilios() {
 		return this.domicilios;
 	}
 
 	/**
 	 * @param domicilios
 	 */
-	public void setDomicilios(List<Domicilio> domicilios) {
+	public void setDomicilios(Set<Domicilio> domicilios) {
 		this.domicilios = domicilios;
 	}
 
 	/**
 	 * @return telefonos
 	 */
-	public List<Telefono> getTelefonos() {
+	public Set<Telefono> getTelefonos() {
 		return this.telefonos;
 	}
 
 	/**
 	 * @param telefonos
 	 */
-	public void setTelefonos(List<Telefono> telefonos) {
+	public void setTelefonos(Set<Telefono> telefonos) {
 		this.telefonos = telefonos;
 	}
 	

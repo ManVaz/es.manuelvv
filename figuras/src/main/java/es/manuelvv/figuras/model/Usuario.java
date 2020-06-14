@@ -1,10 +1,18 @@
 package es.manuelvv.figuras.model;
 
 import java.io.Serializable;
+import java.security.NoSuchAlgorithmException;
 import java.util.Date;
 import java.util.Objects;
 
 import javax.persistence.*;
+
+import org.hibernate.Session;
+import org.hibernate.Transaction;
+
+import es.manuelvv.figuras.DAO.UsuarioDAO;
+import es.manuelvv.framework.bbdd.hibernate.HibernateSession;
+import es.manuelvv.framework.utils.EncriptacionMD5;
 
 /**
  * Clase Usuario
@@ -52,7 +60,7 @@ implements Serializable{
 	@Column(name = "fec_alta")
 	private Date fecAlta;
 	
-	@Column(name = "fecModif")
+	@Column(name = "fec_Modif")
 	private Date fecModif;
 	
 	@Column(name = "ctl_usuario")
@@ -61,7 +69,8 @@ implements Serializable{
 	@Column(name = "ctl_estado")
 	private Integer ctlEstado;
 	
-	@OneToOne(cascade=CascadeType.ALL)
+	@OneToOne(cascade=CascadeType.ALL,
+			  fetch = FetchType.LAZY)
 	@JoinColumn(name="id_persona")
 	private Persona persona;
 	
@@ -83,6 +92,7 @@ implements Serializable{
 	 * @param ctlUsuario
 	 * @param ctlEstado
 	 * @param persona
+	 * @throws NoSuchAlgorithmException 
 	 */
 	public Usuario(int id,
 				   String alias,
@@ -90,10 +100,11 @@ implements Serializable{
 				   Date fecAlta,
 				   Date fecBaja,
 				   Integer intentos,
+				   String password,
 				   Date fecModif,
 				   Integer ctlUsuario,
 				   Integer ctlEstado,	
-				   Persona persona){
+				   Persona persona) throws NoSuchAlgorithmException{
 		
 		setId(id);
 		setAlias(alias);
@@ -101,6 +112,7 @@ implements Serializable{
 		setFecAlta(fecAlta);
 		setFecBaja(fecBaja);
 		setIntentos(intentos);
+		setPassword(EncriptacionMD5.encriptar(password));
 		setFecModif(fecModif);
 		setCtlUsuario(ctlUsuario);
 		setPersona(persona);
@@ -108,6 +120,74 @@ implements Serializable{
 		
 	}
 		
+	/**
+	 * Comprueba si con un alias y password si este existe
+	 * @param alias
+	 * @param password
+	 * @return Usuario
+	 */
+	public boolean existUsuario(String alias, String password) {
+		
+		Session session = HibernateSession.getSession();
+		session.beginTransaction();
+		
+		boolean resultado = false;
+		UsuarioDAO usuarioDAO = new UsuarioDAO();
+		
+		resultado = usuarioDAO.existUsuario(session, alias, password);
+		session.close();
+		
+		return resultado;
+		
+	}	
+	
+	/**
+	 * Comprueba si con un alias si este existe
+	 * @param alias
+	 * @param password
+	 * @return Usuario
+	 */	
+	public boolean existUsuario(String alias) {
+		
+		Session session = HibernateSession.getSession();
+		session.beginTransaction();
+		
+		boolean resultado = false;
+		UsuarioDAO usuarioDAO = new UsuarioDAO();
+		
+		resultado = usuarioDAO.existUsuario(session, alias);
+		session.close();
+		
+		return resultado;
+		
+	}	
+	
+	/**
+	 * Devuelvo un usuario si existe con alias y password
+	 * @param alias
+	 * @param password
+	 * @return
+	 */
+	public Usuario logging(String alias, String password) {
+		
+		Session session = HibernateSession.getSession();
+		Transaction tx = session.beginTransaction();
+		
+		Usuario usuario = new Usuario();
+		UsuarioDAO usuarioDAO = new UsuarioDAO();
+		
+		try {
+			usuario = usuarioDAO.selectByUsuarioPass(session, alias, EncriptacionMD5.encriptar(password));
+		} catch (NoSuchAlgorithmException e) {
+			throw new RuntimeException("No existe usuario");
+		} finally {
+			tx.commit();
+			session.close();
+		}
+		
+		return usuario;
+		
+	}
 	
 	/**
 	 * Metodo que devuelve el alias, el documento y nombre de la persona
@@ -266,9 +346,10 @@ implements Serializable{
 
 	/**
 	 * @param password
+	 * @throws NoSuchAlgorithmException 
 	 */
-	public void setPassword(String password) {
-		this.password = password;
+	public void setPassword(String password) throws NoSuchAlgorithmException {
+		this.password = EncriptacionMD5.encriptar(password);
 	}
 
 	/**
