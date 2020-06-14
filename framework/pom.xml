@@ -27,11 +27,6 @@
 		<version>1.5.0-b01</version>
 	</dependency>
     <dependency>
-        <groupId>org.hibernate</groupId>
-        <artifactId>hibernate-entitymanager</artifactId>
-        <version>4.3.11.Final</version>
-    </dependency>
-    <dependency>
         <groupId>org.hsqldb</groupId>
         <artifactId>hsqldb</artifactId>
         <version>2.3.3</version>
@@ -47,15 +42,26 @@
 		<version>4.3.5.Final</version>
 	</dependency>
 	<dependency>
+	    <groupId>org.hibernate</groupId>
+	    <artifactId>hibernate-core</artifactId>
+	    <version>4.3.11.Final</version>
+	</dependency>	
+	<dependency>
 		<groupId>org.slf4j</groupId>
 		<artifactId>slf4j-simple</artifactId>
 		<version>1.7.21</version>
-	</dependency>
+	</dependency> 
+  	<dependency>
+        <groupId>javax</groupId>
+        <artifactId>javaee-api</artifactId>
+        <version>8.0.1</version>
+        <scope>provided</scope>
+    </dependency>  	
 	<dependency>
-	  <groupId>org.hibernate</groupId>
-	  <artifactId>hibernate-c3p0</artifactId>
-	  <version>4.3.10.Final</version>
-	</dependency>	
+	    <groupId>javax.jws</groupId>
+	    <artifactId>javax.jws-api</artifactId>
+	    <version>1.1</version>
+	</dependency>      	
   </dependencies>	
     
 </project>

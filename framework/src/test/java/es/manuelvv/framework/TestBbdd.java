@@ -31,7 +31,7 @@ public class TestBbdd {
 			
 		}catch (Exception ex){
 			System.out.print(ex.fillInStackTrace());
-			fail("Error al encriptar");
+			fail("Error al acceder bbdd");
 		}
 	}
 	
